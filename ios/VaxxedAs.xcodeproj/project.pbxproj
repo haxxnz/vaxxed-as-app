@@ -10,7 +10,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		5FDC1257B50A5ECDAF11DB66 /* libPods-VaxxedAs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328AF3AE25BB7EE77901B2E /* libPods-VaxxedAs.a */; };
+		4A61F38FD5C93E1822E3D488 /* libPods-VaxxedAs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6262BF3B4CD0DA3DBEA52C23 /* libPods-VaxxedAs.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B8DB3BD5263DE8B7004C18D7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		B8DB3BDC263DEA31004C18D7 /* ExampleFrameProcessorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DB3BD8263DEA31004C18D7 /* ExampleFrameProcessorPlugin.m */; };
@@ -22,22 +22,23 @@
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		0328AF3AE25BB7EE77901B2E /* libPods-VaxxedAs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VaxxedAs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		052890B827472D2F00442644 /* VaxxedAs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = VaxxedAs.entitlements; path = VaxxedAs/VaxxedAs.entitlements; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* VaxxedAs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaxxedAs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = VaxxedAs/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = VaxxedAs/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = VaxxedAs/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = VaxxedAs/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = VaxxedAs/main.m; sourceTree = "<group>"; };
-		1A742B5D83704B309C90C24F /* Baloo2.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Baloo2.ttf; path = ../assets/fonts/Baloo2.ttf; sourceTree = "<group>"; };
-		587D42A28E8A6BD70DCEB7B9 /* Pods-VaxxedAs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaxxedAs.debug.xcconfig"; path = "Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs.debug.xcconfig"; sourceTree = "<group>"; };
+		1A742B5D83704B309C90C24F /* Baloo2.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Baloo2.ttf; path = ../assets/fonts/Baloo2.ttf; sourceTree = "<group>"; };
+		6262BF3B4CD0DA3DBEA52C23 /* libPods-VaxxedAs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VaxxedAs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		693BBA4B71435F9093444A5A /* Pods-VaxxedAs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaxxedAs.release.xcconfig"; path = "Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs.release.xcconfig"; sourceTree = "<group>"; };
+		6F740361FB64A7466116632A /* Pods-VaxxedAs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaxxedAs.debug.xcconfig"; path = "Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = VaxxedAs/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8DB3BD8263DEA31004C18D7 /* ExampleFrameProcessorPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleFrameProcessorPlugin.m; sourceTree = "<group>"; };
 		B8DB3BDA263DEA31004C18D7 /* ExamplePluginSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePluginSwift.swift; sourceTree = "<group>"; };
 		B8DB3BDB263DEA31004C18D7 /* ExamplePluginSwift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplePluginSwift.m; sourceTree = "<group>"; };
 		B8F0E10625E0199F00586F16 /* VaxxedAs-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VaxxedAs-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8F0E10725E0199F00586F16 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		CD17E084C150DCE83F2D1191 /* Pods-VaxxedAs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaxxedAs.release.xcconfig"; path = "Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FDC1257B50A5ECDAF11DB66 /* libPods-VaxxedAs.a in Frameworks */,
+				4A61F38FD5C93E1822E3D488 /* libPods-VaxxedAs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +58,7 @@
 		13B07FAE1A68108700A75B9A /* VaxxedAs */ = {
 			isa = PBXGroup;
 			children = (
+				052890B827472D2F00442644 /* VaxxedAs.entitlements */,
 				B8DB3BD6263DEA31004C18D7 /* Frame Processor Plugins */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -76,7 +78,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				0328AF3AE25BB7EE77901B2E /* libPods-VaxxedAs.a */,
+				6262BF3B4CD0DA3DBEA52C23 /* libPods-VaxxedAs.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,8 +86,8 @@
 		6B9684456A2045ADE5A6E47E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				587D42A28E8A6BD70DCEB7B9 /* Pods-VaxxedAs.debug.xcconfig */,
-				CD17E084C150DCE83F2D1191 /* Pods-VaxxedAs.release.xcconfig */,
+				6F740361FB64A7466116632A /* Pods-VaxxedAs.debug.xcconfig */,
+				693BBA4B71435F9093444A5A /* Pods-VaxxedAs.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -126,7 +128,6 @@
 				1A742B5D83704B309C90C24F /* Baloo2.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		B8DB3BD6263DEA31004C18D7 /* Frame Processor Plugins */ = {
@@ -162,7 +163,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "VaxxedAs" */;
 			buildPhases = (
-				40A5BBF023D9B5DACC72F9F1 /* [CP] Check Pods Manifest.lock */,
+				7C7BEC32A08A44003DF6530D /* [CP] Check Pods Manifest.lock */,
 				B81F12712604CF8800B08949 /* SwiftFormat */,
 				B81F12702604CF6600B08949 /* SwiftLint */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -170,7 +171,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1F3A736B6EB03EDFA914C6BA /* [CP] Copy Pods Resources */,
+				F8E067592E1D769442E8C988 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,6 +193,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = W3TXDS2575;
 						LastSwiftMigration = 1240;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -241,25 +243,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		1F3A736B6EB03EDFA914C6BA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		40A5BBF023D9B5DACC72F9F1 /* [CP] Check Pods Manifest.lock */ = {
+		7C7BEC32A08A44003DF6530D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -317,6 +301,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
+		F8E067592E1D769442E8C988 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VaxxedAs/Pods-VaxxedAs-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,10 +360,14 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 587D42A28E8A6BD70DCEB7B9 /* Pods-VaxxedAs.debug.xcconfig */;
+			baseConfigurationReference = 6F740361FB64A7466116632A /* Pods-VaxxedAs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VaxxedAs/VaxxedAs.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W3TXDS2575;
 				ENABLE_BITCODE = NO;
@@ -374,19 +380,27 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = as.vaxxed.app;
 				PRODUCT_NAME = VaxxedAs;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "VaxxedAs-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD17E084C150DCE83F2D1191 /* Pods-VaxxedAs.release.xcconfig */;
+			baseConfigurationReference = 693BBA4B71435F9093444A5A /* Pods-VaxxedAs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VaxxedAs/VaxxedAs.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W3TXDS2575;
 				INFOPLIST_FILE = VaxxedAs/Info.plist;
@@ -398,8 +412,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = as.vaxxed.app;
 				PRODUCT_NAME = VaxxedAs;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "VaxxedAs-Bridging-Header.h";
 				SWIFT_VERSION = 5.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
