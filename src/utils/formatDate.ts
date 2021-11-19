@@ -40,4 +40,4 @@ const formatDate = ({ dateString, languageName }: DateOptions): string => {
   return dateString;
 };
 
-export default formatDate;
+export { formatDate };

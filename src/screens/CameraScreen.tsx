@@ -6,7 +6,8 @@ import {
   useEffect,
   ReactElement
 } from "react";
-import { StyleSheet, View } from "react-native";
+import { observer } from "mobx-react";
+import { StyleSheet, View, ImageBackground, Text } from "react-native";
 import {
   PinchGestureHandler,
   PinchGestureHandlerGestureEvent,
@@ -34,14 +35,17 @@ import {
 import { PressableOpacity } from "react-native-pressable-opacity";
 import { useIsFocused } from "@react-navigation/core";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import tw from "twrnc";
+
+import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
 import { MAX_ZOOM_FACTOR } from "../Constants";
 import { StatusBarBlurBackground } from "../views/StatusBarBlurBackground";
-import { useIsForeground } from "../hooks/useIsForeground";
+import { useIsForeground } from "../hooks";
 import { cameraStyles as styles } from "../styles";
-import { verifyPassURIWithTrustedIssuers } from "../utils/nzcp";
-import type { Routes } from "../types";
-import { FlipCameraIcon } from "../components";
+import { verifyPassURIWithTrustedIssuers, screen, tw } from "../utils";
+import { verificationStatus } from "../stores";
+import type { Routes, VerificationPayload } from "../types";
+
+const BACKGROUND = require("../img/background.png");
 
 const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 Reanimated.addWhitelistedNativeProps({
@@ -53,18 +57,21 @@ const fps = 30;
 
 type Props = NativeStackScreenProps<Routes, "PermissionsScreen">;
 
-const CameraScreen = ({ navigation }: Props): ReactElement => {
+const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   const camera = useRef<Camera>(null);
   const [cameraPosition, setCameraPosition] = useState<"front" | "back">(
     "back"
   );
   const [qrFound, setQRfound] = useState<boolean>(true);
+  const [latestVerificationStatus, setLatestVerificationStatus] =
+    useState<VerificationPayload>(verificationStatus);
   const zoom = useSharedValue(0);
   const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.QR_CODE]);
   const isFocussed = useIsFocused();
   const isForeground = useIsForeground();
-  const isActive = isFocussed && isForeground;
+  const isCameraActive = isFocussed && isForeground;
   const devices = useCameraDevices();
+  const { dismiss, show, modalProps, isActive } = useBottomModal();
 
   const device = devices?.[cameraPosition] ?? null;
 
@@ -137,9 +144,11 @@ const CameraScreen = ({ navigation }: Props): ReactElement => {
         "did:web:nzcp.identity.health.nz"
       ]);
       const timestamp = new Date();
-      const newPayload = { verification, raw, timestamp };
+      const verificationStatus = { verification, raw, timestamp };
+      setLatestVerificationStatus(verificationStatus);
       setQRfound(true);
-      navigation.navigate("ResultsScreen", newPayload);
+      show();
+      // navigation.navigate("ResultsScreen", verificationStatus);
     }
   };
 
@@ -163,6 +172,12 @@ const CameraScreen = ({ navigation }: Props): ReactElement => {
     return unsubscribe;
   }, [navigation]);
 
+  useEffect(() => {
+    if (!isActive) {
+      setQRfound(false);
+    }
+  }, [isActive]);
+
   return (
     <View
       style={{
@@ -171,7 +186,10 @@ const CameraScreen = ({ navigation }: Props): ReactElement => {
       }}
     >
       {device !== null && (
-        <PinchGestureHandler enabled={isActive} onGestureEvent={onPinchGesture}>
+        <PinchGestureHandler
+          enabled={isCameraActive}
+          onGestureEvent={onPinchGesture}
+        >
           <Reanimated.View style={StyleSheet.absoluteFill}>
             <TapGestureHandler numberOfTaps={2} onEnded={onDoubleTap}>
               <ReanimatedCamera
@@ -185,7 +203,7 @@ const CameraScreen = ({ navigation }: Props): ReactElement => {
                 fps={fps}
                 frameProcessor={frameProcessor}
                 frameProcessorFps={5}
-                isActive={isActive}
+                isActive={isCameraActive}
                 style={StyleSheet.absoluteFill}
                 onError={onError}
               />
@@ -193,9 +211,7 @@ const CameraScreen = ({ navigation }: Props): ReactElement => {
           </Reanimated.View>
         </PinchGestureHandler>
       )}
-
       <StatusBarBlurBackground />
-
       <View style={styles.rightButtonRow}>
         {supportsCameraFlipping && (
           <PressableOpacity
@@ -203,12 +219,48 @@ const CameraScreen = ({ navigation }: Props): ReactElement => {
             style={styles.button}
             onPress={onFlipCameraPressed}
           >
-            <FlipCameraIcon className="text-white w-6 h-6" />
+            <FlipCameraIcon className="w-6 h-6 text-white" />
           </PressableOpacity>
         )}
       </View>
+      <BottomModal height={600} {...modalProps}>
+        <ImageBackground
+          imageStyle={{
+            ...tw`rounded-t-3xl`,
+            width: Math.min(screen.width - 20, 500)
+          }}
+          source={BACKGROUND}
+          style={{
+            ...tw`flex-1 px-2 pt-2 bg-white dark:bg-gray-600 rounded-t-2xl`,
+            width: Math.min(screen.width - 20, 500)
+          }}
+        >
+          <View
+            style={tw`w-full h-full bg-white rounded-t-2xl dark:bg-gray-600 `}
+          >
+            <View
+              style={tw`px-3 pt-3 bg-[#0D9488] dark:bg-[#0F766E] rounded-t-3xl`}
+            >
+              <PressableOpacity
+                disabledOpacity={0.4}
+                style={styles.button}
+                onPress={() => {
+                  dismiss();
+                  setQRfound(false);
+                }}
+              >
+                <FlipCameraIcon className="w-6 h-6 text-white" />
+              </PressableOpacity>
+              <Text style={tw`text-white`}>
+                {JSON.stringify(latestVerificationStatus)}
+              </Text>
+            </View>
+          </View>
+        </ImageBackground>
+        {/* Your Content */}
+      </BottomModal>
     </View>
   );
-};
+});
 
 export { CameraScreen };

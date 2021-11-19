@@ -2,12 +2,13 @@ import { useEffect, useState, ReactElement } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Camera, CameraPermissionStatus } from "react-native-vision-camera";
+import StoreProvider from "./config/StoreProvider";
 import { PermissionsScreen, CameraScreen, ResultsScreen } from "./screens";
 import type { Routes } from "./types";
 
 const Stack = createNativeStackNavigator<Routes>();
 
-export const App = (): ReactElement | null => {
+const Navigator = (): ReactElement | null => {
   const [cameraPermission, setCameraPermission] =
     useState<CameraPermissionStatus>();
 
@@ -41,3 +42,11 @@ export const App = (): ReactElement | null => {
     </NavigationContainer>
   );
 };
+
+const App = () => (
+  <StoreProvider>
+    <Navigator />
+  </StoreProvider>
+);
+
+export { App };

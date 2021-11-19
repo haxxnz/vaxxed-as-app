@@ -10,7 +10,7 @@ const ResultsScreen = ({ route }: Props): ReactElement => {
   const { params } = route;
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>{JSON.stringify(params)}</Text>
+      <Text>{JSON.stringify(params)}</Text>
     </View>
   );
 };
