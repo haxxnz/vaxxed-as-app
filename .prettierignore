@@ -2,3 +2,7 @@
 public
 dist
 node_modules
+ios
+android
+assets
+patches

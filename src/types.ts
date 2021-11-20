@@ -1,4 +1,9 @@
 import type { VerificationResult } from "./utils/nzcp";
+import type { Locale } from "./data/types";
+
+export type Localization = {
+  code: Locale;
+};
 
 export type VerificationStatus = {
   verification: VerificationResult;

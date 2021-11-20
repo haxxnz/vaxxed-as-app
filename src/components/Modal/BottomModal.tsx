@@ -2,7 +2,8 @@
 import React, {
   PropsWithChildren,
   useCallback,
-  useImperativeHandle
+  useImperativeHandle,
+  forwardRef
 } from "react";
 import { StyleSheet, View } from "react-native";
 import {
@@ -21,7 +22,7 @@ import Animated, {
 import { screen } from "../../utils/screen";
 import type { BottomModalProps, BottomModalRef } from "./types";
 
-const BottomModal = React.forwardRef<
+const BottomModal = forwardRef<
   BottomModalRef,
   PropsWithChildren<BottomModalProps>
 >(
