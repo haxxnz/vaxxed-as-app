@@ -43,7 +43,7 @@ const PermissionsScreen = ({ navigation }: Props): ReactElement => {
   }, [cameraPermissionStatus, navigation]);
 
   useEffect(() => {
-    // handleOnLoad();
+    handleOnLoad();
   }, []);
 
   return (
@@ -56,7 +56,7 @@ const PermissionsScreen = ({ navigation }: Props): ReactElement => {
       <Text
         style={{
           ...styles.fontFamily,
-          ...tw`font-bold text-3xl text-white leading-tight`
+          ...tw`text-3xl font-bold leading-tight text-white`
         }}
       >
         Welcome to Vaxxed As.
@@ -70,13 +70,13 @@ const PermissionsScreen = ({ navigation }: Props): ReactElement => {
             </Text>
 
             <PressableOpacity
-              style={tw`flex items-center p-2 border border-gray-500 rounded-full shadow-sm hover:bg-gray-500 focus:outline-none justify-center pb-1`}
+              style={tw`flex items-center justify-center p-2 pb-1 border border-gray-500 rounded-full shadow-sm hover:bg-gray-500 focus:outline-none`}
               onPress={handleOnClick}
             >
               <Text
                 style={{
                   ...styles.fontFamily,
-                  ...tw`font-bold text-white text-xl m-0`
+                  ...tw`m-0 text-xl font-bold text-white`
                 }}
               >
                 Grant

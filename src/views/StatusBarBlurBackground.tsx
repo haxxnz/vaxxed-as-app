@@ -1,23 +1,29 @@
-import { BlurView, BlurViewProperties } from "@react-native-community/blur";
+import { BlurView } from "@react-native-community/blur";
 import { memo, ReactElement } from "react";
-import { Platform } from "react-native";
-import { blurViewStyles as styles } from "../styles";
+import { Platform, View } from "react-native";
+import StaticSafeAreaInsets from "react-native-static-safe-area-insets";
+import tw from "../../lib/tw";
 
-const FALLBACK_COLOR = "rgba(140, 140, 140, 0.3)";
+const FALLBACK_COLOR = "rgba(55, 65, 81, 0.3)";
 
-const StatusBarBlurBackgroundImpl = ({
-  style,
-  ...props
-}: BlurViewProperties): ReactElement | null => {
-  if (Platform.OS !== "ios") return null;
+const StatusBarBlurBackgroundImpl = (): ReactElement | null => {
+  if (Platform.OS !== "ios")
+    return (
+      <View
+        style={tw`absolute top-0 left-0 right-0 h-[${
+          StaticSafeAreaInsets.safeAreaInsetsTop ?? 0
+        }px] bg-gray-700 bg-opacity-30`}
+      />
+    );
 
   return (
     <BlurView
       blurAmount={25}
       blurType="light"
       reducedTransparencyFallbackColor={FALLBACK_COLOR}
-      style={[styles.statusBarBackground, style]}
-      {...props}
+      style={tw`absolute top-0 left-0 right-0 h-[${
+        StaticSafeAreaInsets.safeAreaInsetsTop ?? 0
+      }px]`}
     />
   );
 };

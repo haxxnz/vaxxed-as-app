@@ -1,25 +1,25 @@
 import { observable, action, makeObservable } from "mobx";
-import type { VerificationPayload } from "../types";
+import type { VerificationStatus } from "../types";
 import { verificationStatus } from "./current";
 
 class UIStore {
-  verificationStatus: VerificationPayload;
+  verificationStatus: VerificationStatus;
 
   constructor() {
     makeObservable(this, {
       verificationStatus: observable,
-      setVerificationPayload: action,
-      resetVerificationPayload: action
+      setVerificationStatus: action,
+      resetVerificationStatus: action
     });
 
     this.verificationStatus = verificationStatus;
   }
 
-  setVerificationPayload(newVerificationPayload: VerificationPayload) {
-    this.verificationStatus = newVerificationPayload;
+  setVerificationStatus(newVerificationStatus: VerificationStatus) {
+    this.verificationStatus = newVerificationStatus;
   }
 
-  resetVerificationPayload() {
+  resetVerificationStatus() {
     this.verificationStatus = verificationStatus;
   }
 }

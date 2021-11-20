@@ -7,7 +7,7 @@ import {
   ReactElement
 } from "react";
 import { observer } from "mobx-react";
-import { StyleSheet, View, ImageBackground, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   PinchGestureHandler,
   PinchGestureHandlerGestureEvent,
@@ -35,17 +35,14 @@ import {
 import { PressableOpacity } from "react-native-pressable-opacity";
 import { useIsFocused } from "@react-navigation/core";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-
+import tw from "../../lib/tw";
 import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
-import { MAX_ZOOM_FACTOR } from "../Constants";
-import { StatusBarBlurBackground } from "../views/StatusBarBlurBackground";
+import { MAX_ZOOM_FACTOR, SAFE_AREA_PADDING } from "../Constants";
+import { StatusBarBlurBackground, VerificationResultsDialog } from "../views";
 import { useIsForeground } from "../hooks";
-import { cameraStyles as styles } from "../styles";
-import { verifyPassURIWithTrustedIssuers, screen, tw } from "../utils";
+import { verifyPassURIWithTrustedIssuers } from "../utils";
 import { verificationStatus } from "../stores";
-import type { Routes, VerificationPayload } from "../types";
-
-const BACKGROUND = require("../img/background.png");
+import type { Routes, VerificationStatus } from "../types";
 
 const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 Reanimated.addWhitelistedNativeProps({
@@ -64,7 +61,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   );
   const [qrFound, setQRfound] = useState<boolean>(true);
   const [latestVerificationStatus, setLatestVerificationStatus] =
-    useState<VerificationPayload>(verificationStatus);
+    useState<VerificationStatus>(verificationStatus);
   const zoom = useSharedValue(0);
   const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.QR_CODE]);
   const isFocussed = useIsFocused();
@@ -148,8 +145,14 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       setLatestVerificationStatus(verificationStatus);
       setQRfound(true);
       show();
-      // navigation.navigate("ResultsScreen", verificationStatus);
     }
+  };
+
+  const handleClose = async () => {
+    await new Promise(resolve => {
+      setTimeout(() => resolve(true), 500);
+    });
+    setQRfound(false);
   };
 
   useEffect(() => {
@@ -161,7 +164,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   }, [barcodes]);
 
   useEffect(() => {
-    /* 
+    /*
       Start checking for QR code until
       navigation event has finished
     */
@@ -174,17 +177,12 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
 
   useEffect(() => {
     if (!isActive) {
-      setQRfound(false);
+      handleClose();
     }
   }, [isActive]);
 
   return (
-    <View
-      style={{
-        ...styles.container,
-        ...tw`flex-1 bg-gray-500 dark:bg-gray-700`
-      }}
-    >
+    <View style={tw`flex-1 bg-gray-500 dark:bg-gray-700`}>
       {device !== null && (
         <PinchGestureHandler
           enabled={isCameraActive}
@@ -212,52 +210,28 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
         </PinchGestureHandler>
       )}
       <StatusBarBlurBackground />
-      <View style={styles.rightButtonRow}>
+      <View
+        style={tw`absolute flex items-end bottom-[${
+          SAFE_AREA_PADDING.paddingBottom ?? 0
+        }px] right-4`}
+      >
         {supportsCameraFlipping && (
           <PressableOpacity
             disabledOpacity={0.4}
-            style={styles.button}
+            style={tw`items-center justify-center w-20 h-20 mb-1 bg-gray-800 rounded-full bg-opacity-40`}
             onPress={onFlipCameraPressed}
           >
-            <FlipCameraIcon className="w-6 h-6 text-white" />
+            <FlipCameraIcon className="w-12 h-12 text-white" />
           </PressableOpacity>
         )}
       </View>
-      <BottomModal height={600} {...modalProps}>
-        <ImageBackground
-          imageStyle={{
-            ...tw`rounded-t-3xl`,
-            width: Math.min(screen.width - 20, 500)
+      <BottomModal height={600} {...modalProps} style={tw`pb-2`}>
+        <VerificationResultsDialog
+          verificationStatus={latestVerificationStatus}
+          onClose={() => {
+            dismiss();
           }}
-          source={BACKGROUND}
-          style={{
-            ...tw`flex-1 px-2 pt-2 bg-white dark:bg-gray-600 rounded-t-2xl`,
-            width: Math.min(screen.width - 20, 500)
-          }}
-        >
-          <View
-            style={tw`w-full h-full bg-white rounded-t-2xl dark:bg-gray-600 `}
-          >
-            <View
-              style={tw`px-3 pt-3 bg-[#0D9488] dark:bg-[#0F766E] rounded-t-3xl`}
-            >
-              <PressableOpacity
-                disabledOpacity={0.4}
-                style={styles.button}
-                onPress={() => {
-                  dismiss();
-                  setQRfound(false);
-                }}
-              >
-                <FlipCameraIcon className="w-6 h-6 text-white" />
-              </PressableOpacity>
-              <Text style={tw`text-white`}>
-                {JSON.stringify(latestVerificationStatus)}
-              </Text>
-            </View>
-          </View>
-        </ImageBackground>
-        {/* Your Content */}
+        />
       </BottomModal>
     </View>
   );

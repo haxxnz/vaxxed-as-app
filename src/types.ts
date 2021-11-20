@@ -1,6 +1,6 @@
 import type { VerificationResult } from "./utils/nzcp";
 
-export type VerificationPayload = {
+export type VerificationStatus = {
   verification: VerificationResult;
   raw: string | null;
   timestamp: Date;
@@ -9,5 +9,5 @@ export type VerificationPayload = {
 export type Routes = {
   PermissionsScreen: undefined;
   CameraScreen: undefined;
-  ResultsScreen: VerificationPayload;
+  ResultsScreen: VerificationStatus;
 };
