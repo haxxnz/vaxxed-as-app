@@ -2,13 +2,16 @@ import { useEffect, useState, ReactElement } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Camera, CameraPermissionStatus } from "react-native-vision-camera";
+import { useDeviceContext } from "twrnc";
 import StoreProvider from "./config/StoreProvider";
 import { PermissionsScreen, CameraScreen, ResultsScreen } from "./screens";
 import type { Routes } from "./types";
+import tw from "../lib/tw";
 
 const Stack = createNativeStackNavigator<Routes>();
 
 const Navigator = (): ReactElement | null => {
+  useDeviceContext(tw);
   const [cameraPermission, setCameraPermission] =
     useState<CameraPermissionStatus>();
 

@@ -1,10 +1,14 @@
-import type { VerificationPayload } from "../../types";
+import type { VerificationStatus } from "../../types";
 
-const verificationStatus: VerificationPayload = {
+const verificationStatus: VerificationStatus = {
   verification: {
     success: null,
     violates: null,
-    credentialSubject: { givenName: null, familyName: null, dob: null }
+    credentialSubject: {
+      givenName: "Rafael",
+      familyName: "Contreras",
+      dob: "1978-12-10"
+    }
   },
   raw: "",
   timestamp: null
