@@ -30,7 +30,7 @@ const BottomModal = forwardRef<
     { height, backdropColor, style, children, backdropStyle, animation },
     ref
   ) => {
-    const maxHeight = Math.min((screen.height / 4) * 3, height);
+    const maxHeight = height;
 
     const top = useSharedValue(screen.height);
 
