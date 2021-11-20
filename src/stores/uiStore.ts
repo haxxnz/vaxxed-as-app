@@ -1,11 +1,12 @@
 import { observable, action, makeObservable } from "mobx";
-import type { VerificationStatus, Localization } from "../types";
+import type { VerificationStatus } from "../types";
+import type { LanguageOption } from "../data";
 import { verificationStatus, localization } from "./current";
 
 class UIStore {
   verificationStatus: VerificationStatus;
 
-  localization: Localization;
+  localization: LanguageOption;
 
   constructor() {
     makeObservable(this, {
@@ -28,7 +29,7 @@ class UIStore {
     this.verificationStatus = verificationStatus;
   }
 
-  setLocalization(newLocalization: Localization) {
+  setLocalization(newLocalization: LanguageOption) {
     this.localization = newLocalization;
   }
 }

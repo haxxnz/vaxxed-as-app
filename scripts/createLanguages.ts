@@ -3,10 +3,9 @@ import fsExtra from "fs-extra";
 import prettier from "prettier";
 import JsonToTS from "@riku/json-to-ts";
 
-const { readdirSync, outputJSON, readJSON, outputFile } = fsExtra;
+const { readdirSync, readJSON, outputFile } = fsExtra;
 
 const LOCALES_FOLDER = "./locales";
-const JSON_OUTPUT_OPTIONS = { spaces: 2 };
 const RTL_LANGUAGES = ["ar", "fa", "he", "ps", "ur", "sd"];
 
 type Header = {
@@ -104,7 +103,9 @@ const createLanguages = async (): Promise<void> => {
   const languageOptions = translations.map(
     ({ thisLanguage: { name, callToAction }, language, isRTL, header }) => {
       const option = {
-        value: language,
+        code: language.includes("-")
+          ? `Locale[*${language}*]^`
+          : `Locale.${language}^`,
         name,
         callToAction,
         isRTL,
@@ -114,11 +115,32 @@ const createLanguages = async (): Promise<void> => {
     }
   );
 
-  await outputJSON(
-    "./src/data/languageOptions.json",
-    languageOptions,
-    JSON_OUTPUT_OPTIONS
+  const languageOptionsTemplate = prettier.format(
+    `import { Locale } from "./types";
+
+    export type LanguageOption = {
+      code: Locale;
+      name: string;
+      callToAction: string;
+      isRTL: boolean;
+      changeLanguage: string;
+    };    
+    
+    const languageOptions: LanguageOption[] = ${JSON.stringify(
+      languageOptions,
+      null,
+      2
+    )
+      .replace(/\^"/g, "")
+      .replace(/\*/g, `"`)
+      .replace(/"Locale/g, "Locale")};
+    
+    export { languageOptions };
+    `,
+    { parser: "typescript", ...prettierOptions }
   );
+
+  await outputFile("./src/data/languageOptions.ts", languageOptionsTemplate);
 };
 
 createLanguages();

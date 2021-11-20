@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useState,
-  ReactElement,
-  Fragment
-} from "react";
+import { useCallback, useEffect, useState, ReactElement } from "react";
 import { Linking, View, Text } from "react-native";
 import { Camera, CameraPermissionStatus } from "react-native-vision-camera";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -53,36 +47,21 @@ const PermissionsScreen = ({ navigation }: Props): ReactElement => {
         ...tw`flex-1 bg-gray-500 dark:bg-gray-700`
       }}
     >
-      <Text
-        style={{
-          ...styles.fontFamily,
-          ...tw`text-3xl font-bold leading-tight text-white`
-        }}
-      >
-        Welcome to Vaxxed As.
-      </Text>
       <View style={styles.permissionsContainer}>
         {cameraPermissionStatus !== "authorized" && (
-          <Fragment>
-            <Text style={styles.permissionText}>
-              Vision Camera needs{" "}
-              <Text style={styles.bold}>Camera permission</Text>.
-            </Text>
-
-            <PressableOpacity
-              style={tw`flex items-center justify-center p-2 pb-1 border border-gray-500 rounded-full shadow-sm hover:bg-gray-500 focus:outline-none`}
-              onPress={handleOnClick}
+          <PressableOpacity
+            style={tw`flex items-center justify-center p-2 pb-1 border border-gray-500 rounded-full shadow-sm hover:bg-gray-500 focus:outline-none`}
+            onPress={handleOnClick}
+          >
+            <Text
+              style={{
+                ...styles.fontFamily,
+                ...tw`m-0 text-xl font-bold text-white`
+              }}
             >
-              <Text
-                style={{
-                  ...styles.fontFamily,
-                  ...tw`m-0 text-xl font-bold text-white`
-                }}
-              >
-                Grant
-              </Text>
-            </PressableOpacity>
-          </Fragment>
+              Grant
+            </Text>
+          </PressableOpacity>
         )}
       </View>
     </View>

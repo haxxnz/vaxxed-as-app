@@ -40,7 +40,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ["Baloo2-Regular", "sans-serif"]
+        sans: ["Baloo2-Regular", "sans-serif"],
+        mono: ["FiraCode-Regular", "sans-serif"]
       }
     }
   },

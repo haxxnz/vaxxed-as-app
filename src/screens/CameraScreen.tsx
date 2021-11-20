@@ -35,10 +35,15 @@ import {
 import { PressableOpacity } from "react-native-pressable-opacity";
 import { useIsFocused } from "@react-navigation/core";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { TranslateIcon } from "react-native-heroicons/outline";
 import tw from "../../lib/tw";
 import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
 import { MAX_ZOOM_FACTOR, SAFE_AREA_PADDING } from "../Constants";
-import { StatusBarBlurBackground, VerificationResultsDialog } from "../views";
+import {
+  StatusBarBlurBackground,
+  VerificationResultsDialog,
+  LanguageSelectDialog
+} from "../views";
 import { useIsForeground } from "../hooks";
 import { verifyPassURIWithTrustedIssuers } from "../utils";
 import { verificationStatus } from "../stores";
@@ -68,7 +73,8 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   const isForeground = useIsForeground();
   const isCameraActive = isFocussed && isForeground;
   const devices = useCameraDevices();
-  const { dismiss, show, modalProps, isActive } = useBottomModal();
+  const verificationResultsModal = useBottomModal();
+  const languageSelectModal = useBottomModal();
 
   const device = devices?.[cameraPosition] ?? null;
 
@@ -136,7 +142,11 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
 
   const handleBarcode = async (barcodes: Barcode[]) => {
     const raw = barcodes?.[0]?.displayValue;
-    if (raw && !qrFound) {
+    if (
+      raw &&
+      !qrFound &&
+      !(verificationResultsModal.isActive || languageSelectModal.isActive)
+    ) {
       const verification = await verifyPassURIWithTrustedIssuers(raw, [
         "did:web:nzcp.identity.health.nz"
       ]);
@@ -144,7 +154,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       const verificationStatus = { verification, raw, timestamp };
       setLatestVerificationStatus(verificationStatus);
       setQRfound(true);
-      show();
+      verificationResultsModal.show();
     }
   };
 
@@ -176,10 +186,10 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   }, [navigation]);
 
   useEffect(() => {
-    if (!isActive) {
+    if (!(verificationResultsModal.isActive || languageSelectModal.isActive)) {
       handleClose();
     }
-  }, [isActive]);
+  }, [verificationResultsModal.isActive, languageSelectModal.isActive]);
 
   return (
     <View style={tw`flex-1 bg-gray-500 dark:bg-gray-700`}>
@@ -211,25 +221,49 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       )}
       <StatusBarBlurBackground />
       <View
-        style={tw`absolute flex items-end bottom-[${
-          SAFE_AREA_PADDING.paddingBottom ?? 0
+        style={tw`absolute flex items-end top-[${
+          SAFE_AREA_PADDING.paddingTop + 10 ?? 10
         }px] right-4`}
       >
         {supportsCameraFlipping && (
           <PressableOpacity
             disabledOpacity={0.4}
-            style={tw`items-center justify-center w-20 h-20 mb-1 bg-gray-800 rounded-full bg-opacity-40`}
+            style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
             onPress={onFlipCameraPressed}
           >
             <FlipCameraIcon className="w-12 h-12 text-white" />
           </PressableOpacity>
         )}
+        <PressableOpacity
+          disabledOpacity={0.4}
+          style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
+          onPress={() => {
+            languageSelectModal.show();
+          }}
+        >
+          <TranslateIcon style={tw`w-12 h-12 text-white`} />
+        </PressableOpacity>
       </View>
-      <BottomModal height={800} {...modalProps} style={tw`pb-2`}>
+      <BottomModal
+        height={600}
+        {...verificationResultsModal.modalProps}
+        style={tw`pb-2`}
+      >
         <VerificationResultsDialog
           verificationStatus={latestVerificationStatus}
           onClose={() => {
-            dismiss();
+            verificationResultsModal.dismiss();
+          }}
+        />
+      </BottomModal>
+      <BottomModal
+        height={600}
+        {...languageSelectModal.modalProps}
+        style={tw`pb-2`}
+      >
+        <LanguageSelectDialog
+          onClose={() => {
+            languageSelectModal.dismiss();
           }}
         />
       </BottomModal>
