@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Camera, CameraPermissionStatus } from "react-native-vision-camera";
 import { useDeviceContext } from "twrnc";
 import StoreProvider from "./config/StoreProvider";
-import { PermissionsScreen, CameraScreen, ResultsScreen } from "./screens";
+import { PermissionsScreen, CameraScreen } from "./screens";
 import type { Routes } from "./types";
 import tw from "../lib/tw";
 
@@ -40,7 +40,6 @@ const Navigator = (): ReactElement | null => {
       >
         <Stack.Screen component={PermissionsScreen} name="PermissionsScreen" />
         <Stack.Screen component={CameraScreen} name="CameraScreen" />
-        <Stack.Screen component={ResultsScreen} name="ResultsScreen" />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -11,7 +11,9 @@ import { PressableOpacity } from "react-native-pressable-opacity";
 import tw from "../../lib/tw";
 import { Badge } from "../components";
 import { screen } from "../utils";
-import type { VerificationStatus } from "../types";
+import { useStores } from "../hooks/useStores";
+import { locales, InvalidCodes } from "../data";
+import type { VerificationStatus, Localization } from "../types";
 
 const BACKGROUND = require("../img/background.png");
 
@@ -26,10 +28,26 @@ const VerificationResultsDialog = observer(
     onClose
   }: VerificationResultsDialogProps): ReactElement => {
     const [isFlipped, setIsFlipped] = useState<boolean>(true);
+    const {
+      uiStore: { localization }
+    } = useStores();
 
     const {
-      verification: { success, credentialSubject }
+      verification: { success, credentialSubject, violates }
     } = verificationStatus;
+
+    const getTranslation = (errorCode: string): string => {
+      switch (errorCode) {
+        case "2.1.0.4.3":
+          return "expired";
+        case "4.4":
+          return "notAcovidPass";
+        default:
+          return "invalid";
+      }
+    };
+
+    const { code }: Localization = localization;
 
     return (
       <ImageBackground
@@ -55,7 +73,7 @@ const VerificationResultsDialog = observer(
               <Text
                 style={tw`pt-12 pb-2 font-sans text-6xl font-extrabold text-white uppercase`}
               >
-                {success ? "yes" : "\u00A0"}
+                {success ? locales[code].verificationDialog.yes : "\u00A0"}
               </Text>
             </View>
             <View style={tw`w-full bg-white dark:bg-gray-600 rounded-2xl`}>
@@ -64,7 +82,7 @@ const VerificationResultsDialog = observer(
                 <Text
                   style={tw`px-3 mb-5 font-sans text-2xl font-bold text-center text-gray-700 dark:font-medium dark:text-gray-300`}
                 >
-                  Verification results
+                  {locales[code].verificationDialog["Verification results"]}
                 </Text>
                 <ScrollView style={tw`h-[250px]`}>
                   {isFlipped ? (
@@ -80,7 +98,7 @@ const VerificationResultsDialog = observer(
                               <Text
                                 style={tw`font-sans text-sm text-gray-700 dark:font-medium dark:text-gray-300`}
                               >
-                                {label}
+                                {locales[code].verificationDialog[label]}
                               </Text>
                               <Text
                                 style={tw`mb-3 font-sans text-base text-gray-700 dark:font-medium dark:text-gray-300`}
@@ -100,9 +118,10 @@ const VerificationResultsDialog = observer(
                             <Text
                               style={tw`font-sans text-base leading-tight text-gray-700 dark:text-gray-300`}
                             >
-                              Please use the results for verification purposes
-                              only. It's a good thing to respect everybody's
-                              privacy.
+                              {
+                                locales[code].verificationDialog
+                                  .onlyForVerificationPurposes
+                              }
                             </Text>
                           </View>
                         </Fragment>
@@ -120,14 +139,21 @@ const VerificationResultsDialog = observer(
                               <Text
                                 style={tw`mx-2 mt-1.5 font-sans text-base text-xl leading-tight text-center text-orange-500 dark:text-orange-300`}
                               >
-                                Attention needed
+                                {
+                                  locales[code].verificationDialog[
+                                    "Attention needed"
+                                  ]
+                                }
                               </Text>
                             </View>
                             <Text
                               style={tw`font-sans text-base leading-tight text-gray-700 dark:text-gray-300`}
                             >
-                              Sorry, we could not verify your COVIDpass. Please
-                              contact the Ministry of Health
+                              {
+                                locales[code].invalidCodes[
+                                  getTranslation(violates?.section)
+                                ]
+                              }
                             </Text>
                           </View>
                           <View
@@ -136,9 +162,10 @@ const VerificationResultsDialog = observer(
                             <Text
                               style={tw`font-sans text-base leading-tight text-gray-700 dark:text-gray-300`}
                             >
-                              Please use the results for verification purposes
-                              only. It's a good thing to respect everybody's
-                              privacy.
+                              {
+                                locales[code].verificationDialog
+                                  .onlyForVerificationPurposes
+                              }
                             </Text>
                           </View>
                         </Fragment>
@@ -170,7 +197,7 @@ const VerificationResultsDialog = observer(
                     <Text
                       style={tw`mx-2 mt-1.5 font-sans text-base text-xl leading-tight text-center text-gray-200`}
                     >
-                      View details
+                      {locales[code].verificationDialog["View details"]}
                     </Text>
                   </View>
                 </PressableOpacity>
@@ -183,7 +210,7 @@ const VerificationResultsDialog = observer(
                     <Text
                       style={tw`mx-2 mt-1.5 font-sans text-base text-xl leading-tight text-center text-gray-200`}
                     >
-                      Close
+                      {locales[code].verificationDialog.Close}
                     </Text>
                     <XIcon
                       aria-hidden="true"

@@ -225,7 +225,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
           </PressableOpacity>
         )}
       </View>
-      <BottomModal height={600} {...modalProps} style={tw`pb-2`}>
+      <BottomModal height={800} {...modalProps} style={tw`pb-2`}>
         <VerificationResultsDialog
           verificationStatus={latestVerificationStatus}
           onClose={() => {
