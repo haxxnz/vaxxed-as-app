@@ -42,6 +42,7 @@
     "react-native-gesture-handler": "1.10.3",
     "react-native-heroicons": "2.0.2",
     "react-native-markdown-display": "7.0.0-alpha.2",
+    "react-native-orientation-locker": "1.4.0",
     "react-native-pressable-opacity": "1.0.8",
     "react-native-reanimated": "2.3.0-beta.2",
     "react-native-safe-area-context": "3.3.2",

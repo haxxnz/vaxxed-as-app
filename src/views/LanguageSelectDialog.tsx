@@ -10,7 +10,7 @@ import { screen } from "../utils";
 import { useStores } from "../hooks/useStores";
 import { locales, languageOptions, LanguageOption } from "../data";
 
-const BACKGROUND = require("../img/background.png");
+const BACKGROUND = require("../img/background-2.png");
 
 export type LanguageSelectDialogProps = {
   onClose: () => void;
