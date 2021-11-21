@@ -36,6 +36,7 @@ import { PressableOpacity } from "react-native-pressable-opacity";
 import { useIsFocused } from "@react-navigation/core";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { TranslateIcon } from "react-native-heroicons/outline";
+import Orientation from "react-native-orientation-locker";
 import tw from "../../lib/tw";
 import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
 import { MAX_ZOOM_FACTOR, SAFE_AREA_PADDING } from "../Constants";
@@ -79,12 +80,14 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   const device = devices?.[cameraPosition] ?? null;
 
   const formats = useMemo<CameraDeviceFormat[]>(() => {
-    if (device?.formats == null) return [];
-    return device.formats.sort(sortFormats);
+    if (!device?.formats) {
+      return [];
+    }
+    return device?.formats?.sort(sortFormats);
   }, [device?.formats]);
 
   const supportsCameraFlipping = useMemo(
-    () => devices.back !== null && devices.front !== null,
+    () => devices?.back !== null && devices?.front !== null,
     [devices.back, devices.front]
   );
 
@@ -178,7 +181,10 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       Start checking for QR code until
       navigation event has finished
     */
-    const unsubscribe = navigation.addListener("focus", () => {
+    const unsubscribe = navigation.addListener("focus", async () => {
+      await new Promise(resolve => {
+        setTimeout(() => resolve(true), 500);
+      });
       setQRfound(false);
     });
 
@@ -190,6 +196,10 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       handleClose();
     }
   }, [verificationResultsModal.isActive, languageSelectModal.isActive]);
+
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
 
   return (
     <View style={tw`flex-1 bg-gray-500 dark:bg-gray-700`}>
@@ -231,7 +241,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
             style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
             onPress={onFlipCameraPressed}
           >
-            <FlipCameraIcon className="w-12 h-12 text-white" />
+            <FlipCameraIcon className="text-white w-7 h-7" />
           </PressableOpacity>
         )}
         <PressableOpacity
@@ -245,6 +255,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
         </PressableOpacity>
       </View>
       <BottomModal
+        animation="spring"
         height={600}
         {...verificationResultsModal.modalProps}
         style={tw`pb-2`}

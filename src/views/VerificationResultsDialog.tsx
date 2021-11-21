@@ -10,12 +10,13 @@ import {
 import { PressableOpacity } from "react-native-pressable-opacity";
 import tw from "../../lib/tw";
 import { Badge } from "../components";
-import { screen } from "../utils";
+import { screen, formatDate } from "../utils";
 import { useStores } from "../hooks/useStores";
 import { locales, LanguageOption } from "../data";
 import type { VerificationStatus } from "../types";
 
 const BACKGROUND = require("../img/background.png");
+const BACKGROUND2 = require("../img/background-2.png");
 
 export type VerificationResultsDialogProps = {
   verificationStatus: VerificationStatus;
@@ -55,7 +56,7 @@ const VerificationResultsDialog = observer(
           ...tw`rounded-3xl`,
           width: Math.min(screen.width - 20, 500)
         }}
-        source={BACKGROUND}
+        source={success ? BACKGROUND2 : BACKGROUND}
         style={{
           ...tw`flex-1 p-2 rounded-3xl`,
           width: Math.min(screen.width - 20, 500)
@@ -71,7 +72,7 @@ const VerificationResultsDialog = observer(
           >
             <View style={tw`flex items-center justify-center`}>
               <Text
-                style={tw`pt-12 pb-2 font-sans text-6xl font-bold text-white uppercase`}
+                style={tw`pt-10 pb-1 font-sans text-6xl font-bold text-white uppercase`}
               >
                 {success
                   ? locales?.[code]?.verificationDialog?.yes ?? "Yes"
@@ -80,7 +81,7 @@ const VerificationResultsDialog = observer(
             </View>
             <View style={tw`w-full bg-white dark:bg-gray-600 rounded-3xl`}>
               {success && <Badge />}
-              <View style={tw`pb-8 pt-14`}>
+              <View style={tw`py-6`}>
                 <Text
                   style={tw`mb-5 font-sans text-2xl font-bold text-center text-gray-700 dark:font-medium dark:text-gray-300`}
                 >
@@ -88,7 +89,7 @@ const VerificationResultsDialog = observer(
                     "Verification results"
                   ] ?? "Verification results"}
                 </Text>
-                <ScrollView style={tw`h-[250px]`}>
+                <ScrollView style={tw`h-[270px]`}>
                   {isFlipped ? (
                     <View style={tw`px-6`}>
                       {success ? (
@@ -108,7 +109,12 @@ const VerificationResultsDialog = observer(
                               <Text
                                 style={tw`mb-3 font-sans text-base font-bold text-gray-700 dark:font-medium dark:text-gray-300`}
                               >
-                                {credentialSubject?.[key] ?? " . "}
+                                {key === "dob"
+                                  ? formatDate({
+                                      dateString: credentialSubject[key],
+                                      languageName: code
+                                    })
+                                  : credentialSubject?.[key] ?? " . "}
                               </Text>
                               {index !== 2 && (
                                 <View
@@ -209,7 +215,10 @@ const VerificationResultsDialog = observer(
                 <PressableOpacity
                   disabledOpacity={0.4}
                   style={tw`flex items-center justify-center w-1/2 px-2 py-5`}
-                  onPress={onClose}
+                  onPress={async () => {
+                    onClose();
+                    setIsFlipped(true);
+                  }}
                 >
                   <View style={tw`flex flex-row items-center`}>
                     <Text
