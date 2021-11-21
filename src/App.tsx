@@ -9,6 +9,8 @@ import { PermissionsScreen, CameraScreen } from "./screens";
 import type { Routes } from "./types";
 import tw from "../lib/tw";
 
+process.nextTick = require("process").nextTick;
+
 const Stack = createNativeStackNavigator<Routes>();
 
 const Navigator = (): ReactElement | null => {
