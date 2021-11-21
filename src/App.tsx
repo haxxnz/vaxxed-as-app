@@ -10,6 +10,7 @@ import type { Routes } from "./types";
 import tw from "../lib/tw";
 
 process.nextTick = require("process").nextTick;
+global.Buffer = require("buffer").Buffer;
 
 const Stack = createNativeStackNavigator<Routes>();
 

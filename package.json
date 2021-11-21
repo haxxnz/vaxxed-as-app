@@ -29,6 +29,7 @@
     "appcenter": "4.3.0",
     "appcenter-analytics": "4.3.0",
     "appcenter-crashes": "4.3.0",
+    "buffer": "^6.0.3",
     "cbor": "8.1.0",
     "cbor-rn-prereqs": "8.1.0",
     "date-fns": "2.25.0",
