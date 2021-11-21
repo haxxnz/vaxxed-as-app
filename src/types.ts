@@ -1,4 +1,4 @@
-import type { VerificationResult } from "./utils/nzcp";
+import type { VerificationResult } from "@vaxxnz/nzcp";
 import type { Locale } from "./data/types";
 
 export type Localization = {

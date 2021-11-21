@@ -34,8 +34,14 @@ const VerificationResultsDialog = observer(
     } = useStores();
 
     const {
-      verification: { success, credentialSubject, violates }
+      verification: { success, credentialSubject, violates },
+      timestamp
     } = verificationStatus;
+
+    // prevent from showing the dialog if the verification is ready
+    if (!timestamp) {
+      return null;
+    }
 
     const getTranslation = (errorCode: string): string => {
       switch (errorCode) {

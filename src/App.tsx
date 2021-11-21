@@ -1,3 +1,4 @@
+import "text-encoding-polyfill";
 import { useEffect, useState, ReactElement } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -7,6 +8,9 @@ import StoreProvider from "./config/StoreProvider";
 import { PermissionsScreen, CameraScreen } from "./screens";
 import type { Routes } from "./types";
 import tw from "../lib/tw";
+
+process.nextTick = require("process").nextTick;
+global.Buffer = require("buffer").Buffer;
 
 const Stack = createNativeStackNavigator<Routes>();
 

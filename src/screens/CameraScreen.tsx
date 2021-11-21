@@ -37,6 +37,7 @@ import { useIsFocused } from "@react-navigation/core";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { TranslateIcon } from "react-native-heroicons/outline";
 import Orientation from "react-native-orientation-locker";
+import { verifyPassURIOffline } from "@vaxxnz/nzcp";
 import tw from "../../lib/tw";
 import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
 import { MAX_ZOOM_FACTOR, SAFE_AREA_PADDING } from "../Constants";
@@ -46,7 +47,6 @@ import {
   LanguageSelectDialog
 } from "../views";
 import { useIsForeground } from "../hooks";
-import { verifyPassURIWithTrustedIssuers } from "../utils";
 import { verificationStatus } from "../stores";
 import type { Routes, VerificationStatus } from "../types";
 
@@ -150,9 +150,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       !qrFound &&
       !(verificationResultsModal.isActive || languageSelectModal.isActive)
     ) {
-      const verification = await verifyPassURIWithTrustedIssuers(raw, [
-        "did:web:nzcp.identity.health.nz"
-      ]);
+      const verification = verifyPassURIOffline(raw);
       const timestamp = new Date();
       const verificationStatus = { verification, raw, timestamp };
       setLatestVerificationStatus(verificationStatus);
@@ -264,6 +262,8 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
           verificationStatus={latestVerificationStatus}
           onClose={() => {
             verificationResultsModal.dismiss();
+            // reset back to initial value to prevent flickering on next show
+            setLatestVerificationStatus(verificationStatus);
           }}
         />
       </BottomModal>
