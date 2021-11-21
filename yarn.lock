@@ -2030,6 +2030,11 @@
     "@typescript-eslint/types" "5.4.0"
     eslint-visitor-keys "^3.0.0"
 
+"@vaxxnz/nzcp@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vaxxnz/nzcp/-/nzcp-1.0.0.tgz#e8a4440a187031308c2aa59d7b285633da0f9ce8"
+  integrity sha512-VG+ZC7r9U5+5Hxs49zoD2p0bk//O+21ZAjR7fVB16zKoc2YvUf8nI8+CstMcxUBqXpzvknATfdLd8M0fY5nyWQ==
+
 abort-controller@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"

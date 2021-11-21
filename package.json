@@ -25,6 +25,7 @@
     "@react-native-community/slider": "4.1.12",
     "@react-navigation/native": "6.0.6",
     "@react-navigation/native-stack": "6.2.5",
+    "@vaxxnz/nzcp": "^1.0.0",
     "appcenter": "4.3.0",
     "appcenter-analytics": "4.3.0",
     "appcenter-crashes": "4.3.0",
