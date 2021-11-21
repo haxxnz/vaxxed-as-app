@@ -262,6 +262,8 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
           verificationStatus={latestVerificationStatus}
           onClose={() => {
             verificationResultsModal.dismiss();
+            // reset back to initial value to prevent flickering on next show
+            setLatestVerificationStatus(verificationStatus);
           }}
         />
       </BottomModal>
