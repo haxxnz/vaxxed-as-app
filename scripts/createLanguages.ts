@@ -29,11 +29,11 @@ const createLanguages = async (): Promise<void> => {
   const prettierOptions = await readJSON("./.prettierrc");
 
   const locales = await Promise.all(
-    languages.map(async (language: string, index) => {
+    languages.map(async (language: string) => {
       const locale = await readJSON(
         `${LOCALES_FOLDER}/${language}/translation.json`
       );
-      if (index === 0) {
+      if (language === "en") {
         const enums = languages
           .map(
             language =>
@@ -109,7 +109,8 @@ const createLanguages = async (): Promise<void> => {
         name,
         callToAction,
         isRTL,
-        changeLanguage: header["Change language"]
+        changeLanguage: header["Change language"],
+        title: header["Scan your NZ COVIDpass"]
       };
       return option;
     }
@@ -124,6 +125,7 @@ const createLanguages = async (): Promise<void> => {
       callToAction: string;
       isRTL: boolean;
       changeLanguage: string;
+      title?: string;
     };    
     
     const languageOptions: LanguageOption[] = ${JSON.stringify(

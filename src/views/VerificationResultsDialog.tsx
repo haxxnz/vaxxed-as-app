@@ -97,7 +97,7 @@ const VerificationResultsDialog = observer(
                 </Text>
                 <ScrollView style={tw`h-[270px]`}>
                   {isFlipped ? (
-                    <View style={tw`px-6`}>
+                    <View style={tw`px-6 mb-4`}>
                       {success ? (
                         <Fragment>
                           {[
@@ -165,7 +165,10 @@ const VerificationResultsDialog = observer(
                             >
                               {locales?.[code]?.invalidCodes?.[
                                 getTranslation(violates?.section)
-                              ] ??
+                              ]?.replace(
+                                /(?:__|[*#])|\[(.*?)\]\(.*?\)/gm,
+                                "$1"
+                              ) ??
                                 "Sorry, we could not verify your COVIDpass. Please contact the Ministry of Health"}
                             </Text>
                           </View>
@@ -184,7 +187,7 @@ const VerificationResultsDialog = observer(
                       )}
                     </View>
                   ) : (
-                    <View style={tw`px-6`}>
+                    <View style={tw`px-6 mb-4`}>
                       <Text
                         style={tw`font-mono text-xs text-base leading-tight text-gray-700 dark:text-gray-300`}
                       >
@@ -192,6 +195,30 @@ const VerificationResultsDialog = observer(
                       </Text>
                     </View>
                   )}
+                  <View style={tw`px-6`}>
+                    <Text
+                      style={tw`mb-2 font-sans text-base leading-tight text-gray-700 dark:text-gray-300`}
+                    >
+                      {locales?.[code]?.footer?.disclaimer ??
+                        "This is not an official Government website. For more information about the COVIDpass, please go to https://nzcp.covid19.health.nz."}
+                    </Text>
+                    <Text
+                      style={tw`mb-2 font-sans text-base leading-tight text-gray-700 dark:text-gray-300`}
+                    >
+                      {locales?.[code]?.footer?.privacy ??
+                        "The results of the scans are not shared to any entity; private, public, or governmental. No tracking whatsoever has been added to this site, if you find any issues, please email vaxxed@contrer.as"}
+                    </Text>
+                    <View
+                      style={tw`w-full h-px mb-3 bg-gray-200 dark:bg-gray-500`}
+                    />
+                    <Text
+                      style={tw`font-sans text-base leading-tight text-gray-700 dark:text-gray-300`}
+                    >
+                      Site created by Rafael Contreras as a member of the
+                      Vaxx.nz collective. Source code at
+                      https://github.com/vaxxnz/vaxxed-as-web
+                    </Text>
+                  </View>
                 </ScrollView>
               </View>
               <View

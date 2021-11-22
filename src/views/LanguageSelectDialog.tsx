@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import { View, ImageBackground, Text, ScrollView } from "react-native";
 import { XIcon } from "react-native-heroicons/outline";
 import { CheckIcon } from "react-native-heroicons/solid";
+import FastStorage from "react-native-fast-storage";
 import { PressableOpacity } from "react-native-pressable-opacity";
 import tw from "../../lib/tw";
 import { screen } from "../utils";
@@ -22,7 +23,7 @@ export type ItemProps = {
 } & LanguageOption &
   LanguageSelectDialogProps;
 
-const Item = ({
+export const LanguageItem = ({
   isLast,
   isRTL,
   callToAction,
@@ -34,7 +35,9 @@ const Item = ({
     <PressableOpacity
       disabled={isCurrent}
       style={tw`w-full px-6 pb-3`}
-      onPress={onClose}
+      onPress={() => {
+        onClose();
+      }}
     >
       <View
         style={tw`flex items-center ${
@@ -94,7 +97,7 @@ const LanguageSelectDialog = observer(
       { code, isRTL, changeLanguage, callToAction, name },
       index: number
     ) => (
-      <Item
+      <LanguageItem
         key={code}
         callToAction={callToAction}
         changeLanguage={changeLanguage}
@@ -103,14 +106,20 @@ const LanguageSelectDialog = observer(
         isLast={index + 1 === languageOptions.length}
         isRTL={isRTL}
         name={name}
-        onClose={() => {
-          uiStore.setLocalization({
+        onClose={async () => {
+          const selectedLocalization = {
             code,
             isRTL,
             changeLanguage,
             callToAction,
             name
-          });
+          };
+
+          uiStore.setLocalization(selectedLocalization);
+          await FastStorage.setItem(
+            "selectedLocalization",
+            JSON.stringify(selectedLocalization)
+          );
           onClose();
         }}
       />
@@ -151,7 +160,7 @@ const LanguageSelectDialog = observer(
               >
                 <View style={tw`flex flex-row items-center`}>
                   <Text
-                    style={tw`mx-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
+                    style={tw`mr-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
                   >
                     {locales?.[code]?.verificationDialog?.Close ?? "Close"}
                   </Text>
