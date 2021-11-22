@@ -2,6 +2,11 @@ import type { Locales } from "./types";
 
 const locales: Locales = {
   ar: {
+    cameraPermissionDialog: {
+      callToAction: "السماح",
+      content: "يتطلب {{appname}} استخدام الكاميرا لالتقاط {{passName}}",
+      title: "يرجى السماح باستخدام الكاميرا"
+    },
     footer: {
       disclaimer:
         "هذا ليس موقعًا رسميًا للحكومة. لمزيد من المعلومات حول COVIDpass، يرجى الانتقال إلى https://nzcp.covid19.health.nz",
@@ -39,6 +44,12 @@ const locales: Locales = {
     }
   },
   de: {
+    cameraPermissionDialog: {
+      callToAction: "Zulassen",
+      content:
+        "Die {{appname}} erfordert die Verwendung Ihrer Kamera, um den {{passName}} zu erfassen",
+      title: "Bitte erlauben Sie die Verwendung der Kamera"
+    },
     footer: {
       disclaimer:
         "Dies ist keine offizielle Regierungswebsite. Weitere Informationen zum CovidPass finden Sie unter https://nzcp.covid19.health.nz",
@@ -76,6 +87,12 @@ const locales: Locales = {
     }
   },
   en: {
+    cameraPermissionDialog: {
+      callToAction: "Allow",
+      content:
+        "The {{appname}} requires the use of your camera to capture the {{passName}}",
+      title: "Please allow camera use"
+    },
     footer: {
       disclaimer:
         "This is not an official Government website. For more information about the COVIDpass, please go to https://nzcp.covid19.health.nz",
@@ -113,6 +130,12 @@ const locales: Locales = {
     }
   },
   es: {
+    cameraPermissionDialog: {
+      callToAction: "Permitir",
+      content:
+        "El {{appname}} requiere el uso de la cámara para capturar el {{passName}}",
+      title: "Permita el uso de la cámara"
+    },
     footer: {
       disclaimer:
         "Este no es un sitio web oficial del gobierno. Para obtener más información sobre el COVIDpass, visite https://nzcp.covid19.health.nz",
@@ -150,6 +173,12 @@ const locales: Locales = {
     }
   },
   fa: {
+    cameraPermissionDialog: {
+      callToAction: "اجازه دادن",
+      content:
+        "{{appname}} نیاز به استفاده از دوربین شما برای ضبط {{passName}} دارد",
+      title: "لطفا اجازه استفاده از دوربین را بدهید"
+    },
     footer: {
       disclaimer:
         "این یک وب سایت رسمی دولت نیست. برای کسب اطلاعات بیشتر در مورد CovidPass، لطفا به آدرس https://nzcp.covid19.health.nz مراجعه نمایید.",
@@ -187,6 +216,12 @@ const locales: Locales = {
     }
   },
   hi: {
+    cameraPermissionDialog: {
+      callToAction: "अनुमति दें",
+      content:
+        "{{appname}} को {{passName}} को कैप्चर करने के लिए आपके कैमरे के उपयोग की आवश्यकता होती है",
+      title: "कृपया कैमरा उपयोग की अनुमति दें"
+    },
     footer: {
       disclaimer:
         "यह एक आधिकारिक सरकारी वेबसाइट नहीं है। COVIDpass के बारे में अधिक जानकारी के लिए, कृपया https://nzcp.covid19.health.nz . पर जाएं",
@@ -224,6 +259,12 @@ const locales: Locales = {
     }
   },
   mi: {
+    cameraPermissionDialog: {
+      callToAction: "Tukua",
+      content:
+        "Ko te {{appname}} me whakamahi to kamera ki te hopu i te {{passName}}",
+      title: "Whakaaetia te whakamahi kamera"
+    },
     footer: {
       disclaimer:
         "Ehara tenei i te paetukutuku mana a te Kawanatanga. Mo etahi atu korero mo te COVIDpass, haere ki https://nzcp.covid19.health.nz",
@@ -261,6 +302,12 @@ const locales: Locales = {
     }
   },
   nl: {
+    cameraPermissionDialog: {
+      callToAction: "Toestaan",
+      content:
+        "De {{appname}} vereist het gebruik van je camera om de {{passName}} vast te leggen",
+      title: "Gelieve cameragebruik toe"
+    },
     footer: {
       disclaimer:
         "Dit is geen officiële website van de overheid. Ga voor meer informatie over de COVIDpass naar https://nzcp.covid19.health.nz",
@@ -298,6 +345,12 @@ const locales: Locales = {
     }
   },
   ru: {
+    cameraPermissionDialog: {
+      callToAction: "Разрешить",
+      content:
+        "{{appname}} требует использования вашей камеры для съемки {{passName}}",
+      title: "Пожалуйста, разрешите использование камеры"
+    },
     footer: {
       disclaimer:
         "Это не официальный сайт правительства. Для получения дополнительной информации о COVIDPass перейдите по ссылке https://nzcp.covid19.health.nz",
@@ -335,6 +388,12 @@ const locales: Locales = {
     }
   },
   sm: {
+    cameraPermissionDialog: {
+      callToAction: "Fa&#39;ataga",
+      content:
+        "E mana&#39;omia e le {{appname}} le fa&#39;aogaina o lau meapueata e pu&#39;e ai le {{passName}}",
+      title: "Fa&#39;amolemole fa&#39;ataga le fa&#39;aoga meapueata"
+    },
     footer: {
       disclaimer:
         "E le ose upegatafa&#39;ilagi aloaia a le Malo. Mo nisi fa&#39;amatalaga e uiga ile COVIDpass, fa&#39;amolemole alu ile https://nzcp.covid19.health.nz",
@@ -372,6 +431,11 @@ const locales: Locales = {
     }
   },
   "zh-cn": {
+    cameraPermissionDialog: {
+      callToAction: "允许",
+      content: "{{appname}} 需要使用相机捕获 {{passName}}",
+      title: "请允许使用相机"
+    },
     footer: {
       disclaimer:
         "這不是官方的政府網站。 有關 COVIDpass 的更多信息，請訪問 https://nzcp.covid19.health.nz",
@@ -409,6 +473,11 @@ const locales: Locales = {
     }
   },
   "zh-hk": {
+    cameraPermissionDialog: {
+      callToAction: "允許",
+      content: "{{appname}} 需要使用您的相機來捕捉 {{passName}}",
+      title: "請允許使用相機"
+    },
     footer: {
       disclaimer:
         "這不是官方的政府網站。 有關 COVIDpass 的更多信息，請訪問 https://nzcp.covid19.health.nz",

@@ -20,6 +20,7 @@ export type Locales = {
 };
 
 export type Translation = {
+  cameraPermissionDialog: CameraPermissionDialog;
   footer: Footer;
   header: Header;
   invalidCodes: InvalidCodes;
@@ -59,4 +60,10 @@ export type Header = {
 export type Footer = {
   disclaimer: string;
   privacy: string;
+};
+
+export type CameraPermissionDialog = {
+  callToAction: string;
+  content: string;
+  title: string;
 };

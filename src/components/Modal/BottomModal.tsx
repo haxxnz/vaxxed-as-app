@@ -30,8 +30,6 @@ const BottomModal = forwardRef<
     { height, backdropColor, style, children, backdropStyle, animation },
     ref
   ) => {
-    const maxHeight = height;
-
     const top = useSharedValue(screen.height);
 
     // Animates top value
@@ -56,7 +54,7 @@ const BottomModal = forwardRef<
 
     useImperativeHandle(ref, () => ({
       show: () => {
-        top.value = updateTop(screen.height - maxHeight);
+        top.value = updateTop(screen.height - height);
       },
       dismiss: () => {
         top.value = updateTop(screen.height);
@@ -73,19 +71,16 @@ const BottomModal = forwardRef<
       },
       onActive: (event, context) => {
         // Prevent modal to go up more than it should
-        if (
-          context.startHeight + event.translationY >
-          screen.height - maxHeight
-        ) {
+        if (context.startHeight + event.translationY > screen.height - height) {
           top.value = context.startHeight + event.translationY;
         }
       },
       onEnd: () => {
         // Determine if modal should close or go back to its original height
-        if (top.value > screen.height - maxHeight / 2) {
+        if (top.value > screen.height - height / 2) {
           top.value = updateTop(screen.height);
         } else {
-          top.value = updateTop(screen.height - maxHeight);
+          top.value = updateTop(screen.height - height);
         }
       }
     });
@@ -98,7 +93,7 @@ const BottomModal = forwardRef<
       // Less opaque if top value is larger, vice verca
       opacity: interpolate(
         top.value,
-        [screen.height - maxHeight, screen.height],
+        [screen.height - height, screen.height],
         [1, 0]
       ),
       // don't show backdrop component if modal is not present, as it cancels any touch events
@@ -119,7 +114,7 @@ const BottomModal = forwardRef<
           <Animated.View
             style={[
               styles.container,
-              { height: maxHeight },
+              { height },
               style,
               containerAnimatedStyle
             ]}

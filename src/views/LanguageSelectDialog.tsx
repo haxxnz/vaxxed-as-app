@@ -22,7 +22,7 @@ export type ItemProps = {
 } & LanguageOption &
   LanguageSelectDialogProps;
 
-const Item = ({
+export const LanguageItem = ({
   isLast,
   isRTL,
   callToAction,
@@ -94,7 +94,7 @@ const LanguageSelectDialog = observer(
       { code, isRTL, changeLanguage, callToAction, name },
       index: number
     ) => (
-      <Item
+      <LanguageItem
         key={code}
         callToAction={callToAction}
         changeLanguage={changeLanguage}
@@ -151,7 +151,7 @@ const LanguageSelectDialog = observer(
               >
                 <View style={tw`flex flex-row items-center`}>
                   <Text
-                    style={tw`mx-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
+                    style={tw`mr-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
                   >
                     {locales?.[code]?.verificationDialog?.Close ?? "Close"}
                   </Text>
