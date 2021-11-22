@@ -8,6 +8,7 @@ import {
 } from "react";
 import { observer } from "mobx-react";
 import { ImageBackground, StyleSheet, View, Text } from "react-native";
+import Torch from "react-native-torch";
 import {
   PinchGestureHandler,
   PinchGestureHandlerGestureEvent,
@@ -35,7 +36,12 @@ import {
 import { PressableOpacity } from "react-native-pressable-opacity";
 import { useIsFocused } from "@react-navigation/core";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { TranslateIcon, QrcodeIcon } from "react-native-heroicons/outline";
+import {
+  TranslateIcon,
+  QrcodeIcon,
+  LightningBoltIcon
+} from "react-native-heroicons/outline";
+import { LightningBoltIcon as LightningBoltIconSolid } from "react-native-heroicons/solid";
 import Orientation from "react-native-orientation-locker";
 import { verifyPassURIOffline } from "@vaxxnz/nzcp";
 import { useInterval } from "react-interval-hook";
@@ -74,6 +80,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   const [latestVerificationStatus, setLatestVerificationStatus] =
     useState<VerificationStatus>(verificationStatus);
   const [languageIndex, setLanguageIndex] = useState<number>(0);
+  const [isTorchOn, setIsTorchOn] = useState<boolean>(false);
   const zoom = useSharedValue(0);
   const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.QR_CODE]);
   const isFocussed = useIsFocused();
@@ -173,6 +180,11 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       setTimeout(() => resolve(true), 500);
     });
     setQRfound(false);
+  };
+
+  const torchToggle = () => {
+    Torch.switchState(!isTorchOn);
+    setIsTorchOn(!isTorchOn);
   };
 
   useEffect(() => {
@@ -315,6 +327,17 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
             <FlipCameraIcon className="text-white w-7 h-7" />
           </PressableOpacity>
         )}
+        <PressableOpacity
+          disabledOpacity={0.4}
+          style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
+          onPress={torchToggle}
+        >
+          {isTorchOn ? (
+            <LightningBoltIconSolid style={tw`text-white w-7 h-7`} />
+          ) : (
+            <LightningBoltIcon style={tw`text-white w-7 h-7`} />
+          )}
+        </PressableOpacity>
       </View>
       <BottomModal
         animation="spring"
