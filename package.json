@@ -50,6 +50,7 @@
     "react-native-screens": "3.9.0",
     "react-native-static-safe-area-insets": "2.1.1",
     "react-native-svg": "12.1.1",
+    "react-native-torch": "1.2.0",
     "react-native-video": "5.2.0",
     "react-native-vision-camera": "2.9.3",
     "stream-browserify": "^3.0.0",
