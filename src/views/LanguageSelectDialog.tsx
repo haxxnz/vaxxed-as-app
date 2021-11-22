@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import { View, ImageBackground, Text, ScrollView } from "react-native";
 import { XIcon } from "react-native-heroicons/outline";
 import { CheckIcon } from "react-native-heroicons/solid";
+import FastStorage from "react-native-fast-storage";
 import { PressableOpacity } from "react-native-pressable-opacity";
 import tw from "../../lib/tw";
 import { screen } from "../utils";
@@ -34,7 +35,9 @@ export const LanguageItem = ({
     <PressableOpacity
       disabled={isCurrent}
       style={tw`w-full px-6 pb-3`}
-      onPress={onClose}
+      onPress={() => {
+        onClose();
+      }}
     >
       <View
         style={tw`flex items-center ${
@@ -103,14 +106,20 @@ const LanguageSelectDialog = observer(
         isLast={index + 1 === languageOptions.length}
         isRTL={isRTL}
         name={name}
-        onClose={() => {
-          uiStore.setLocalization({
+        onClose={async () => {
+          const selectedLocalization = {
             code,
             isRTL,
             changeLanguage,
             callToAction,
             name
-          });
+          };
+
+          uiStore.setLocalization(selectedLocalization);
+          await FastStorage.setItem(
+            "selectedLocalization",
+            JSON.stringify(selectedLocalization)
+          );
           onClose();
         }}
       />
