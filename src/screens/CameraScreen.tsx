@@ -9,6 +9,7 @@ import {
 import { observer } from "mobx-react";
 import { ImageBackground, StyleSheet, View, Text } from "react-native";
 import Torch from "react-native-torch";
+import { isTablet } from "react-native-device-info";
 import {
   PinchGestureHandler,
   PinchGestureHandlerGestureEvent,
@@ -217,7 +218,9 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   }, [verificationResultsModal.isActive, languageSelectModal.isActive]);
 
   useEffect(() => {
-    Orientation.lockToPortrait();
+    if (!isTablet()) {
+      Orientation.lockToPortrait();
+    }
   }, []);
 
   const { code }: LanguageOption = localization;

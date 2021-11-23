@@ -23,7 +23,7 @@
     "sourceType": "module",
     "useJSXTextNode": true
   },
-  ignorePatterns: ["babel.config.js", "metro.config.js", ".eslintrc.js"],
+  "ignorePatterns": ["babel.config.js", "metro.config.js", ".eslintrc.js"],
   "plugins": [
     "@typescript-eslint",
     "import",
