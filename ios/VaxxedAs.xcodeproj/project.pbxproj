@@ -15,7 +15,7 @@
 		51175ABD2DEE4D8B9D90D645 /* firacode.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38C5A27B0C7749BABF276D29 /* firacode.ttf */; };
 		61EA4C307E875AA8D9A4F8B2 /* libPods-VaxxedAs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA214286E4AD989966435522 /* libPods-VaxxedAs.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B8DB3BD5263DE8B7004C18D7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		B8DB3BD5263DE8B7004C18D7 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		B8DB3BDC263DEA31004C18D7 /* ExampleFrameProcessorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DB3BD8263DEA31004C18D7 /* ExampleFrameProcessorPlugin.m */; };
 		B8DB3BDD263DEA31004C18D7 /* ExamplePluginSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB3BDA263DEA31004C18D7 /* ExamplePluginSwift.swift */; };
 		B8DB3BDE263DEA31004C18D7 /* ExamplePluginSwift.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DB3BDB263DEA31004C18D7 /* ExamplePluginSwift.m */; };
@@ -24,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		052890B827472D2F00442644 /* VaxxedAs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = VaxxedAs.entitlements; path = VaxxedAs/VaxxedAs.entitlements; sourceTree = "<group>"; };
 		05B4D771274912CB000F332D /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* VaxxedAs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaxxedAs.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +65,6 @@
 			children = (
 				052890B827472D2F00442644 /* VaxxedAs.entitlements */,
 				B8DB3BD6263DEA31004C18D7 /* Frame Processor Plugins */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -359,7 +357,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				B8DB3BDC263DEA31004C18D7 /* ExampleFrameProcessorPlugin.m in Sources */,
-				B8DB3BD5263DE8B7004C18D7 /* BuildFile in Sources */,
+				B8DB3BD5263DE8B7004C18D7 /* (null) in Sources */,
 				B8DB3BDD263DEA31004C18D7 /* ExamplePluginSwift.swift in Sources */,
 				B8F0E10825E0199F00586F16 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,

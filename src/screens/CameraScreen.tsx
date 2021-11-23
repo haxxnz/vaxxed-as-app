@@ -47,6 +47,7 @@ import Orientation from "react-native-orientation-locker";
 import { verifyPassURIOffline } from "@vaxxnz/nzcp";
 import { useInterval } from "react-interval-hook";
 import { Freeze } from "react-freeze";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
 import { MAX_ZOOM_FACTOR, SAFE_AREA_PADDING } from "../Constants";
 import {
@@ -167,6 +168,10 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       !qrFound &&
       !(verificationResultsModal.isActive || languageSelectModal.isActive)
     ) {
+      ReactNativeHapticFeedback.trigger("impactLight", {
+        enableVibrateFallback: false,
+        ignoreAndroidSystemSettings: false
+      });
       const verification = verifyPassURIOffline(raw);
       const timestamp = new Date();
       const verificationStatus = { verification, raw, timestamp };
