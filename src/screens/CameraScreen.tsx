@@ -47,7 +47,12 @@ import { verifyPassURIOffline } from "@vaxxnz/nzcp";
 import { useInterval } from "react-interval-hook";
 import { Freeze } from "react-freeze";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { useBottomModal, BottomModal, FlipCameraIcon } from "../components";
+import {
+  useBottomModal,
+  BottomModal,
+  FlipCameraIcon,
+  ViewFinder
+} from "../components";
 import { MAX_ZOOM_FACTOR, SAFE_AREA_PADDING } from "../Constants";
 import {
   StatusBarBlurBackground,
@@ -286,16 +291,21 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       )}
       <StatusBarBlurBackground />
       <View
-        style={tw`absolute flex items-end top-[${
+        style={tw`absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center`}
+      >
+        <ViewFinder className="text-white opacity-40 w-52 h-52" />
+      </View>
+      <View
+        style={tw`absolute flex justify-between items-end top-[${
           SAFE_AREA_PADDING.paddingTop + 10 ?? 10
-        }px] left-4 right-4`}
+        }px] bottom-[${SAFE_AREA_PADDING.paddingBottom ?? 0}px] left-4 right-4`}
       >
         <ImageBackground
           imageStyle={{
             ...tw`rounded-3xl`
           }}
           source={BACKGROUND}
-          style={tw`flex-1 w-full mb-4 rounded-3xl`}
+          style={tw`w-full rounded-3xl`}
         >
           <View style={tw`flex flex-row items-center justify-between p-2`}>
             <View
@@ -335,11 +345,11 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
             </PressableOpacity>
           </View>
         </ImageBackground>
-        <View style={tw`justify-between h-80`}>
+        <View style={tw`pb-20`}>
           {supportsCameraFlipping && (
             <PressableOpacity
               disabledOpacity={0.4}
-              style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
+              style={tw`items-center justify-center w-20 h-20 mb-6 bg-gray-800 rounded-full bg-opacity-40`}
               onPress={onFlipCameraPressed}
             >
               <FlipCameraIcon className="text-white w-7 h-7" />
@@ -360,6 +370,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
           </PressableOpacity>
         </View>
       </View>
+
       <BottomModal
         animation="spring"
         height={610}
