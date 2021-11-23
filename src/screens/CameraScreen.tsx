@@ -8,7 +8,6 @@ import {
 } from "react";
 import { observer } from "mobx-react";
 import { ImageBackground, StyleSheet, View, Text } from "react-native";
-import Torch from "react-native-torch";
 import { isTablet } from "react-native-device-info";
 import {
   PinchGestureHandler,
@@ -40,9 +39,9 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   TranslateIcon,
   QrcodeIcon,
-  LightningBoltIcon
+  LightBulbIcon
 } from "react-native-heroicons/outline";
-import { LightningBoltIcon as LightningBoltIconSolid } from "react-native-heroicons/solid";
+import { LightBulbIcon as LightBulbIconSolid } from "react-native-heroicons/solid";
 import Orientation from "react-native-orientation-locker";
 import { verifyPassURIOffline } from "@vaxxnz/nzcp";
 import { useInterval } from "react-interval-hook";
@@ -67,9 +66,16 @@ Reanimated.addWhitelistedNativeProps({
   zoom: true
 });
 
+const Sound = require("react-native-sound");
+
+Sound.setCategory("Playback");
+
 const SCALE_FULL_ZOOM = 3;
 const fps = 30;
 const BACKGROUND = require("../img/background.png");
+const tada = require("../sounds/tada.mp3");
+
+const tadaSound = new Sound(tada);
 
 type Props = NativeStackScreenProps<Routes, "PermissionsScreen">;
 
@@ -131,10 +137,6 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
     setCameraPosition(p => (p === "back" ? "front" : "back"));
   }, []);
 
-  const onDoubleTap = useCallback(() => {
-    onFlipCameraPressed();
-  }, [onFlipCameraPressed]);
-
   const neutralZoom = device?.neutralZoom ?? 1;
 
   const onPinchGesture = useAnimatedGestureHandler<
@@ -177,6 +179,9 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       const verificationStatus = { verification, raw, timestamp };
       setLatestVerificationStatus(verificationStatus);
       setQRfound(true);
+      if (verification.success) {
+        tadaSound?.play(() => {});
+      }
       verificationResultsModal.show();
     }
   };
@@ -189,9 +194,12 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   };
 
   const torchToggle = () => {
-    Torch.switchState(!isTorchOn);
     setIsTorchOn(!isTorchOn);
   };
+
+  const onDoubleTap = useCallback(() => {
+    torchToggle();
+  }, [torchToggle]);
 
   useEffect(() => {
     zoom.value = neutralZoom;
@@ -269,6 +277,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
                 frameProcessorFps={5}
                 isActive={isCameraActive}
                 style={StyleSheet.absoluteFill}
+                torch={isTorchOn ? "on" : "off"}
                 onError={onError}
               />
             </TapGestureHandler>
@@ -326,26 +335,30 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
             </PressableOpacity>
           </View>
         </ImageBackground>
-        {supportsCameraFlipping && (
+        <View style={tw`justify-between h-80`}>
+          {supportsCameraFlipping && (
+            <PressableOpacity
+              disabledOpacity={0.4}
+              style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
+              onPress={onFlipCameraPressed}
+            >
+              <FlipCameraIcon className="text-white w-7 h-7" />
+            </PressableOpacity>
+          )}
           <PressableOpacity
             disabledOpacity={0.4}
-            style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
-            onPress={onFlipCameraPressed}
+            style={tw`items-center justify-center w-20 h-20 mb-2 ${
+              isTorchOn ? "bg-yellow-300" : "bg-gray-800 bg-opacity-40"
+            } rounded-full`}
+            onPress={torchToggle}
           >
-            <FlipCameraIcon className="text-white w-7 h-7" />
+            {isTorchOn ? (
+              <LightBulbIconSolid style={tw`text-gray-700 w-7 h-7`} />
+            ) : (
+              <LightBulbIcon style={tw`text-white w-7 h-7`} />
+            )}
           </PressableOpacity>
-        )}
-        <PressableOpacity
-          disabledOpacity={0.4}
-          style={tw`items-center justify-center w-20 h-20 mb-2 bg-gray-800 rounded-full bg-opacity-40`}
-          onPress={torchToggle}
-        >
-          {isTorchOn ? (
-            <LightningBoltIconSolid style={tw`text-white w-7 h-7`} />
-          ) : (
-            <LightningBoltIcon style={tw`text-white w-7 h-7`} />
-          )}
-        </PressableOpacity>
+        </View>
       </View>
       <BottomModal
         animation="spring"

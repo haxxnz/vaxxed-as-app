@@ -51,6 +51,14 @@ const languageOptions: LanguageOption[] = [
     title: "CovidPass خود را اسکن نمایید. "
   },
   {
+    code: Locale.fr,
+    name: "English",
+    callToAction: "Use vaxxed.as in English",
+    isRTL: false,
+    changeLanguage: "Change language",
+    title: "Scan your NZ COVIDpass"
+  },
+  {
     code: Locale.hi,
     name: "अंग्रेज़ी",
     callToAction: "हिंदी में vaxxed.as का प्रयोग करें",

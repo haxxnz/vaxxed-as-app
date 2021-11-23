@@ -112,15 +112,18 @@ const CameraPermissionDialog = observer(
           >
             <PressableOpacity
               disabledOpacity={0.4}
-              style={tw`flex items-center justify-center w-1/2 px-2 py-5`}
+              style={tw`w-1/2 px-3 py-5`}
               onPress={() => {
                 toggleLanguageOptions(!showLanguageOptions);
               }}
             >
-              <View style={tw`flex flex-row items-center`}>
-                <TranslateIcon style={tw`w-6 h-6 mr-2 text-white`} />
+              <View style={tw`flex flex-row items-center justify-start`}>
+                <TranslateIcon
+                  aria-hidden="true"
+                  style={tw`w-6 h-6 mr-3 text-gray-200`}
+                />
                 <Text
-                  style={tw`mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
+                  style={tw`mt-1.5 font-sans text-base leading-tight text-gray-200`}
                 >
                   {options.map(({ changeLanguage }, index) => {
                     if (index === languageIndex) {
@@ -133,20 +136,19 @@ const CameraPermissionDialog = observer(
             </PressableOpacity>
             <PressableOpacity
               disabledOpacity={0.4}
-              style={tw`flex items-center justify-center w-1/2 px-2 py-5`}
+              style={tw`w-1/2 px-3 py-5`}
               onPress={onRequestPermission}
             >
-              <View style={tw`flex flex-row items-center`}>
+              <View style={tw`flex flex-row items-center justify-end`}>
                 <Text
-                  style={tw`mr-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
+                  style={tw`mt-1.5 font-sans text-base leading-tight text-gray-200 mr-3`}
                 >
                   {locales?.[code]?.cameraPermissionDialog?.callToAction ??
                     "Allow"}
                 </Text>
                 <CameraIcon
                   aria-hidden="true"
-                  size={24}
-                  style={tw`text-gray-200`}
+                  style={tw`w-6 h-6 text-gray-200`}
                 />
               </View>
             </PressableOpacity>

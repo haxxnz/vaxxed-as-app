@@ -78,10 +78,10 @@ const VerificationResultsDialog = observer(
           >
             <View style={tw`flex items-center justify-center`}>
               <Text
-                style={tw`pt-10 pb-1 font-sans text-6xl font-bold text-white uppercase`}
+                style={tw`pt-8 pb-2 font-sans text-4xl font-bold text-white`}
               >
                 {success
-                  ? locales?.[code]?.verificationDialog?.yes ?? "Yes"
+                  ? locales?.[code]?.verificationDialog?.Valid ?? "Valid"
                   : "\u00A0"}
               </Text>
             </View>
@@ -95,7 +95,7 @@ const VerificationResultsDialog = observer(
                     "Verification results"
                   ] ?? "Verification results"}
                 </Text>
-                <ScrollView style={tw`h-[270px]`}>
+                <ScrollView style={tw`h-[290px]`}>
                   {isFlipped ? (
                     <View style={tw`px-6 mb-4`}>
                       {success ? (
@@ -226,19 +226,18 @@ const VerificationResultsDialog = observer(
               >
                 <PressableOpacity
                   disabledOpacity={0.4}
-                  style={tw`flex items-center justify-center w-1/2 px-2 py-5`}
+                  style={tw`w-1/2 px-3 py-5`}
                   onPress={() => {
                     setIsFlipped(!isFlipped);
                   }}
                 >
-                  <View style={tw`flex flex-row items-center`}>
+                  <View style={tw`flex flex-row items-center justify-start`}>
                     <SwitchHorizontalIcon
                       aria-hidden="true"
-                      size={24}
-                      style={tw`text-gray-200`}
+                      style={tw`w-6 h-6 mr-3 text-gray-200`}
                     />
                     <Text
-                      style={tw`mx-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
+                      style={tw`mt-1.5 font-sans text-base leading-tight text-gray-200`}
                     >
                       {locales?.[code]?.verificationDialog?.["View details"] ??
                         "View details"}
@@ -247,22 +246,21 @@ const VerificationResultsDialog = observer(
                 </PressableOpacity>
                 <PressableOpacity
                   disabledOpacity={0.4}
-                  style={tw`flex items-center justify-center w-1/2 px-2 py-5`}
+                  style={tw`w-1/2 px-3 py-5`}
                   onPress={async () => {
                     onClose();
                     setIsFlipped(true);
                   }}
                 >
-                  <View style={tw`flex flex-row items-center`}>
+                  <View style={tw`flex flex-row items-center justify-end`}>
                     <Text
-                      style={tw`mx-2 mt-1.5 font-sans text-base leading-tight text-center text-gray-200`}
+                      style={tw`mt-1.5 font-sans text-base leading-tight text-gray-200 mr-3`}
                     >
                       {locales?.[code]?.verificationDialog?.Close ?? "Close"}
                     </Text>
                     <XIcon
                       aria-hidden="true"
-                      size={24}
-                      style={tw`text-gray-200`}
+                      style={tw`w-6 h-6 text-gray-200`}
                     />
                   </View>
                 </PressableOpacity>

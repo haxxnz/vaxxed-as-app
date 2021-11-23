@@ -390,6 +390,11 @@ PODS:
   - RNScreens (3.9.0):
     - React-Core
     - React-RCTImage
+  - RNSound (0.11.1):
+    - React-Core
+    - RNSound/Core (= 0.11.1)
+  - RNSound/Core (0.11.1):
+    - React-Core
   - RNStaticSafeAreaInsets (2.1.1):
     - React
   - RNSVG (12.1.1):
@@ -448,6 +453,7 @@ DEPENDENCIES:
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSound (from `../node_modules/react-native-sound`)
   - RNStaticSafeAreaInsets (from `../node_modules/react-native-static-safe-area-insets`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - vision-camera-qrcode-scanner (from `../node_modules/vision-camera-qrcode-scanner`)
@@ -557,6 +563,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSound:
+    :path: "../node_modules/react-native-sound"
   RNStaticSafeAreaInsets:
     :path: "../node_modules/react-native-static-safe-area-insets"
   RNSVG:
@@ -626,6 +634,7 @@ SPEC CHECKSUMS:
   RNReactNativeHapticFeedback: b83bfb4b537bdd78eb4f6ffe63c6884f7b049ead
   RNReanimated: 0a220d11e97e5de1c552e943a9a3f89b06c2cbf2
   RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
+  RNSound: 27e8268bdb0a1f191f219a33267f7e0445e8d62f
   RNStaticSafeAreaInsets: 6103cf09647fa427186d30f67b0f5163c1ae8252
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   vision-camera-qrcode-scanner: 64bcfdad2be941ee66ea0a69ca816ca191d51cd3
