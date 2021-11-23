@@ -36,6 +36,8 @@ const locales: Locales = {
       "Date of birth": "تاريخ الميلاد",
       "First name": "الاسم الأول",
       "Last name": "اسم العائلة",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "نتائج التحقق",
       "View details": "عرض التفاصيل",
       onlyForVerificationPurposes:
@@ -79,6 +81,8 @@ const locales: Locales = {
       "Date of birth": "Geburtsdatum",
       "First name": "Vorname",
       "Last name": "Nachname",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "Prüfergebnisse",
       "View details": "Details anzeigen",
       onlyForVerificationPurposes:
@@ -122,6 +126,8 @@ const locales: Locales = {
       "Date of birth": "Date of birth",
       "First name": "First name",
       "Last name": "Last name",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "Verification results",
       "View details": "View details",
       onlyForVerificationPurposes:
@@ -165,6 +171,8 @@ const locales: Locales = {
       "Date of birth": "Fecha de cumpleaños",
       "First name": "Primer nombre",
       "Last name": "Apellido",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "Resultados de la verificación",
       "View details": "Ver detalles",
       onlyForVerificationPurposes:
@@ -208,11 +216,58 @@ const locales: Locales = {
       "Date of birth": "تاریخ تولد",
       "First name": "نام",
       "Last name": "نام خانوادگی",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "تأیید اعتبار نتایج ",
       "View details": "مشاهده جزئیات",
       onlyForVerificationPurposes:
         "لطفا نتایج را فقط به منظور اهداف تأیید استفاده نمایید و به حريم خصوصي دیگران احترام بگذارید. ",
       yes: "آری"
+    }
+  },
+  fr: {
+    cameraPermissionDialog: {
+      callToAction: "Allow",
+      content:
+        "The {{appname}} requires the use of your camera to capture the {{passName}}",
+      title: "Please allow camera use"
+    },
+    footer: {
+      disclaimer:
+        "Il ne s'agit pas d'un site Web officiel du gouvernement. Pour plus d'informations sur le CovidPass, rendez-vous sur https://nzcp.covid19.health.nz",
+      privacy:
+        "The results of the scans are not shared to any entity; private, public, or governmental. No tracking whatsoever has been added to this site, if you find any issues, please email vaxxed@contrer.as"
+    },
+    header: {
+      "Change language": "Change language",
+      "Scan your NZ COVIDpass": "Scan your NZ COVIDpass"
+    },
+    invalidCodes: {
+      expired:
+        "Sorry, it looks like you COVIDpass has expired. Please contact the [Ministry of Health]({{link}})",
+      invalid:
+        "Désolé, nous n'avons pas pu vérifier votre CovidPass. Veuillez contacter le [ministère de la Santé]({{link}})",
+      notAcovidPass:
+        "Sorry, this doesn't look to be a COVIDpass. Please contact the [Ministry of Health]({{link}})"
+    },
+    thisLanguage: {
+      callToAction: "Use vaxxed.as in English",
+      name: "English"
+    },
+    verificationDialog: {
+      "Attention needed": "Attention needed",
+      Close: "Close",
+      "Copy results": "Copier les résultats",
+      "Date of birth": "Date of birth",
+      "First name": "First name",
+      "Last name": "Last name",
+      Success: "Success",
+      Valid: "Valid",
+      "Verification results": "Résultats de vérification",
+      "View details": "View details",
+      onlyForVerificationPurposes:
+        "Please use the results for verification purposes only. It's a good thing to respect everybody's privacy.",
+      yes: "Yes"
     }
   },
   hi: {
@@ -251,6 +306,8 @@ const locales: Locales = {
       "Date of birth": "जन्मतिथि",
       "First name": "पहला नाम",
       "Last name": "अंतिम नाम",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "सत्यापन के परिणाम",
       "View details": "विवरण देखें",
       onlyForVerificationPurposes:
@@ -294,6 +351,8 @@ const locales: Locales = {
       "Date of birth": "Te ra whanau",
       "First name": "Ingoa tuatahi",
       "Last name": "Ingoa whakamutunga",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "Nga hua manatoko",
       "View details": "Tirohia nga taipitopito",
       onlyForVerificationPurposes:
@@ -337,6 +396,8 @@ const locales: Locales = {
       "Date of birth": "Geboortedatum",
       "First name": "Voornaam",
       "Last name": "Achternaam",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "Resultaten van verificatie",
       "View details": "Bekijk details",
       onlyForVerificationPurposes:
@@ -380,6 +441,8 @@ const locales: Locales = {
       "Date of birth": "Дата рождения",
       "First name": "Имя",
       "Last name": "Фамилия",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "Результаты проверки",
       "View details": "Подробнее",
       onlyForVerificationPurposes:
@@ -423,6 +486,8 @@ const locales: Locales = {
       "Date of birth": "Aso fanau",
       "First name": "Igoa muamua",
       "Last name": "Faʻaiu",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "I&#39;uga fa&#39;amaoniga",
       "View details": "Va&#39;ai fa&#39;amatalaga",
       onlyForVerificationPurposes:
@@ -465,6 +530,8 @@ const locales: Locales = {
       "Date of birth": "出生日期",
       "First name": "名字",
       "Last name": "姓氏",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "验证结果",
       "View details": "查看详情",
       onlyForVerificationPurposes:
@@ -507,6 +574,8 @@ const locales: Locales = {
       "Date of birth": "出生日期",
       "First name": "名字",
       "Last name": "姓氏",
+      Success: "Success",
+      Valid: "Valid",
       "Verification results": "驗證結果",
       "View details": "查看詳情",
       onlyForVerificationPurposes:

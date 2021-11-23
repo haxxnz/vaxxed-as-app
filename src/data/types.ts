@@ -6,6 +6,7 @@ export enum Locale {
   en = "en",
   es = "es",
   fa = "fa",
+  fr = "fr",
   hi = "hi",
   mi = "mi",
   nl = "nl",
@@ -35,6 +36,8 @@ export type VerificationDialog = {
   "Date of birth": string;
   "First name": string;
   "Last name": string;
+  Success: string;
+  Valid: string;
   "Verification results": string;
   "View details": string;
   onlyForVerificationPurposes: string;
