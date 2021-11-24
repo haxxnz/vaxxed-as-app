@@ -47,6 +47,7 @@ import { verifyPassURIOffline } from "@vaxxnz/nzcp";
 import { useInterval } from "react-interval-hook";
 import { Freeze } from "react-freeze";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+import Fireworks from "react-native-fireworks";
 import {
   useBottomModal,
   BottomModal,
@@ -139,7 +140,7 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
   const onError = useCallback(() => {}, []);
 
   const onFlipCameraPressed = useCallback(() => {
-    setCameraPosition(p => (p === "back" ? "front" : "back"));
+    setCameraPosition(position => (position === "back" ? "front" : "back"));
   }, []);
 
   const neutralZoom = device?.neutralZoom ?? 1;
@@ -291,86 +292,104 @@ const CameraScreen = observer(({ navigation }: Props): ReactElement => {
       )}
       <StatusBarBlurBackground />
       <View
+        pointerEvents="none"
         style={tw`absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center`}
       >
         <ViewFinder className="text-white opacity-40 w-52 h-52" />
       </View>
-      <View
-        style={tw`absolute flex justify-between items-end top-[${
-          SAFE_AREA_PADDING.paddingTop + 10 ?? 10
-        }px] bottom-[${SAFE_AREA_PADDING.paddingBottom ?? 0}px] left-4 right-4`}
-      >
-        <ImageBackground
-          imageStyle={{
-            ...tw`rounded-3xl`
-          }}
-          source={BACKGROUND}
-          style={tw`w-full rounded-3xl`}
+      {!latestVerificationStatus.verification.success && (
+        <View
+          style={tw`absolute flex justify-between top-[${
+            SAFE_AREA_PADDING.paddingTop + 10 ?? 10
+          }px] left-4 right-4`}
         >
-          <View style={tw`flex flex-row items-center justify-between p-2`}>
-            <View
-              style={tw`flex flex-row items-center justify-center p-2 bg-white rounded-2xl`}
-            >
-              <QrcodeIcon
-                style={tw`w-6 h-6 ${
-                  localization.isRTL ? "ml-2" : "mr-2"
-                } text-gray-600`}
-              />
-              <Text style={tw`font-sans text-lg text-gray-600`}>Vaxxed As</Text>
+          <ImageBackground
+            imageStyle={{
+              ...tw`w-full rounded-3xl`
+            }}
+            source={BACKGROUND}
+            style={tw`w-full rounded-3xl`}
+          >
+            <View style={tw`flex flex-row items-center justify-between p-2`}>
+              <View
+                style={tw`flex flex-row items-center justify-center p-2 bg-white rounded-2xl`}
+              >
+                <QrcodeIcon
+                  style={tw`w-6 h-6 ${
+                    localization.isRTL ? "ml-2" : "mr-2"
+                  } text-gray-600`}
+                />
+                <Text style={tw`font-sans text-lg text-gray-600`}>
+                  Vaxxed As
+                </Text>
+              </View>
+              <PressableOpacity
+                disabledOpacity={0.4}
+                style={tw`flex ${
+                  localization.isRTL ? "flex-row-reverse" : "flex-row"
+                } items-center justify-center px-3 py-2 bg-indigo-900 rounded-2xl`}
+                onPress={() => {
+                  languageSelectModal.show();
+                }}
+              >
+                <TranslateIcon
+                  style={tw`w-6 h-6 ${
+                    localization.isRTL ? "ml-2" : "mr-2"
+                  } text-white`}
+                />
+                {options.map(({ changeLanguage, code }, index) => {
+                  if (index === languageIndex) {
+                    return (
+                      <Text
+                        key={code}
+                        style={tw`font-sans text-base text-white`}
+                      >
+                        {changeLanguage}
+                      </Text>
+                    );
+                  }
+                  return null;
+                })}
+              </PressableOpacity>
             </View>
-            <PressableOpacity
-              disabledOpacity={0.4}
-              style={tw`flex ${
-                localization.isRTL ? "flex-row-reverse" : "flex-row"
-              } items-center justify-center px-3 py-2 bg-indigo-900 rounded-2xl`}
-              onPress={() => {
-                languageSelectModal.show();
-              }}
-            >
-              <TranslateIcon
-                style={tw`w-6 h-6 ${
-                  localization.isRTL ? "ml-2" : "mr-2"
-                } text-white`}
-              />
-              {options.map(({ changeLanguage, code }, index) => {
-                if (index === languageIndex) {
-                  return (
-                    <Text key={code} style={tw`font-sans text-base text-white`}>
-                      {changeLanguage}
-                    </Text>
-                  );
-                }
-                return null;
-              })}
-            </PressableOpacity>
-          </View>
-        </ImageBackground>
-        <View style={tw`pb-20`}>
-          {supportsCameraFlipping && (
-            <PressableOpacity
-              disabledOpacity={0.4}
-              style={tw`items-center justify-center w-20 h-20 mb-6 bg-gray-800 rounded-full bg-opacity-40`}
-              onPress={onFlipCameraPressed}
-            >
-              <FlipCameraIcon className="text-white w-7 h-7" />
-            </PressableOpacity>
-          )}
+          </ImageBackground>
+        </View>
+      )}
+      {supportsCameraFlipping && (
+        <View
+          style={tw`absolute bottom-[${
+            SAFE_AREA_PADDING.paddingBottom + 70 ?? 70
+          }px] right-4`}
+        >
           <PressableOpacity
             disabledOpacity={0.4}
-            style={tw`items-center justify-center w-20 h-20 mb-2 ${
-              isTorchOn ? "bg-yellow-300" : "bg-gray-800 bg-opacity-40"
-            } rounded-full`}
-            onPress={torchToggle}
+            style={tw`items-center justify-center w-20 h-20 bg-gray-800 rounded-full bg-opacity-40`}
+            onPress={onFlipCameraPressed}
           >
-            {isTorchOn ? (
-              <LightBulbIconSolid style={tw`text-gray-700 w-7 h-7`} />
-            ) : (
-              <LightBulbIcon style={tw`text-white w-7 h-7`} />
-            )}
+            <FlipCameraIcon className="text-white w-7 h-7" />
           </PressableOpacity>
         </View>
+      )}
+      <View
+        style={tw`absolute bottom-[${
+          SAFE_AREA_PADDING.paddingBottom + 70 ?? 70
+        }px] left-4`}
+      >
+        <PressableOpacity
+          disabledOpacity={0.4}
+          style={tw`items-center justify-center w-20 h-20 ${
+            isTorchOn ? "bg-yellow-300" : "bg-gray-800 bg-opacity-40"
+          } rounded-full`}
+          onPress={torchToggle}
+        >
+          {isTorchOn ? (
+            <LightBulbIconSolid style={tw`text-gray-700 w-7 h-7`} />
+          ) : (
+            <LightBulbIcon style={tw`text-white w-7 h-7`} />
+          )}
+        </PressableOpacity>
       </View>
-
+      {latestVerificationStatus.verification.success && <Fireworks />}
       <BottomModal
         animation="spring"
         height={610}
