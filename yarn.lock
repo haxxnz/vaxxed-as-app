@@ -2038,10 +2038,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
-"@types/react-native-video@5.0.10":
-  version "5.0.10"
-  resolved "https://registry.yarnpkg.com/@types/react-native-video/-/react-native-video-5.0.10.tgz#bd1ecc6fade0b8d37dad711599144942af2e987d"
-  integrity sha512-PmF5h6Co0eM8NaPlQ/MHYeauP6fvroheb6dkAvQ+Lm5hbpCGxRxLNxhrTwG3vRaUd9guj9SpYlriWpY/5rBIJw==
+"@types/react-native-video@5.0.11":
+  version "5.0.11"
+  resolved "https://registry.yarnpkg.com/@types/react-native-video/-/react-native-video-5.0.11.tgz#6cf9edff4ed126f27829536186b37560c5bffe67"
+  integrity sha512-FYd7QgsiytmUdK8F7F2ZIfu0AzV6/mBULWJZb/y1zyE/kmuEs0BEvsyMtpEdL0mxPGD1EDzAOXd8OsFwZY+TkQ==
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -2245,7 +2245,7 @@
     "@typescript-eslint/types" "5.4.0"
     eslint-visitor-keys "^3.0.0"
 
-"@vaxxnz/nzcp@^1.0.0":
+"@vaxxnz/nzcp@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@vaxxnz/nzcp/-/nzcp-1.0.1.tgz#9ca80517672c89a0305e5830c15cb1ba3336b515"
   integrity sha512-PV7O7Y7GcXpmH04wOnysOnthIYoteNdg6aRX/UFxDo/GVTzLY3Lio5xzhSRF/5YX5poIYngH4Zvl3gYYstWN3w==
@@ -3171,7 +3171,7 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
   integrity sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==
 
-buffer@^6.0.3:
+buffer@6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
   integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
@@ -4241,10 +4241,10 @@ eslint-config-airbnb-base@^15.0.0:
     object.entries "^1.1.5"
     semver "^6.3.0"
 
-eslint-config-airbnb@19.0.0:
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-19.0.0.tgz#c518503e2dc7c04d91a3e8ff54dcdbd30729829c"
-  integrity sha512-f5FzCDw8osQJtifOGazdBtYuDOH38FVQSOwHvSU0iFjAmkdl4zQ1jG+YV6sVNt4gqVubqJwn98zZQzDoaCwDyw==
+eslint-config-airbnb@19.0.1:
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-19.0.1.tgz#c4e39150a22571a78b27f701fd40b67addf21d2a"
+  integrity sha512-ooV8Vdt3gmV6hCSJutRw5beArd56Cd++vvy7j0Y7DBhUKqcTyI7cWNcJpCJlcftGPRLtzdU0hNMtquOUSSm8nA==
   dependencies:
     eslint-config-airbnb-base "^15.0.0"
     object.assign "^4.1.2"
@@ -7760,7 +7760,7 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-process@^0.11.10:
+process@0.11.10:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
@@ -8044,10 +8044,10 @@ react-native-video@5.2.0:
     prop-types "^15.7.2"
     shaka-player "^2.5.9"
 
-react-native-vision-camera@2.9.3:
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/react-native-vision-camera/-/react-native-vision-camera-2.9.3.tgz#4147362aeeab8c3d033ae01953c515ad01be7e94"
-  integrity sha512-/lHx7W0fTO25gXGeEoOadQQ/7pn8LGtKFWMAwz8Wg6IZO5mf3h5WTxX3aoJeLXUgr9ltHkBbNWYl5G4GE43r8A==
+react-native-vision-camera@2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/react-native-vision-camera/-/react-native-vision-camera-2.9.4.tgz#e80f9da924dbd308478a15a421957dff146b9259"
+  integrity sha512-glaemA2MHW3Yq7kM7Ty+4jPnyncDp8Opm7nH93GGoZwYOXCbTj/GzLl8yOi9NrhFE+yrq2SD4ijyxNMO2fJ7kQ==
 
 react-native@0.62.2:
   version "0.62.2"
@@ -8839,7 +8839,7 @@ static-extend@^0.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-stream-browserify@^3.0.0:
+stream-browserify@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-3.0.0.tgz#22b0a2850cdf6503e73085da1fc7b7d0c2122f2f"
   integrity sha512-H73RAHsVBapbim0tU2JwwOiXUj+fikfiaoYAKHF3VJfA0pe2BCzkhAHBlLG6REzE+2WNZcxOXjK7lkso+9euLA==
@@ -9142,7 +9142,7 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-text-encoding-polyfill@^0.6.7:
+text-encoding-polyfill@0.6.7:
   version "0.6.7"
   resolved "https://registry.yarnpkg.com/text-encoding-polyfill/-/text-encoding-polyfill-0.6.7.tgz#4d27de0153e4c86eb2631ffd74c2f3f57969a9ec"
   integrity sha512-/DZ1XJqhbqRkCop6s9ZFu8JrFRwmVuHg4quIRm+ziFkR3N3ec6ck6yBvJ1GYeEQZhLVwRW0rZE+C3SSJpy0RTg==
