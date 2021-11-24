@@ -26,7 +26,7 @@ const locales: Locales = {
         "عذرًا، هذا لا يبدو أنه COVIDpass. يرجى الاتصال بـ [وزارة الصحة]({{link}})"
     },
     thisLanguage: {
-      callToAction: "باللغة العربية vaxxed.as استخدم",
+      callToAction: "استخدم vaxxed.as باللغة العربية",
       name: "عربي"
     },
     verificationDialog: {
@@ -36,8 +36,8 @@ const locales: Locales = {
       "Date of birth": "تاريخ الميلاد",
       "First name": "الاسم الأول",
       "Last name": "اسم العائلة",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "نجاح",
+      Valid: "صالح",
       "Verification results": "نتائج التحقق",
       "View details": "عرض التفاصيل",
       onlyForVerificationPurposes:
@@ -81,8 +81,8 @@ const locales: Locales = {
       "Date of birth": "Geburtsdatum",
       "First name": "Vorname",
       "Last name": "Nachname",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "Erfolg",
+      Valid: "Gültig",
       "Verification results": "Prüfergebnisse",
       "View details": "Details anzeigen",
       onlyForVerificationPurposes:
@@ -171,8 +171,8 @@ const locales: Locales = {
       "Date of birth": "Fecha de cumpleaños",
       "First name": "Primer nombre",
       "Last name": "Apellido",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "Éxito",
+      Valid: "Válido",
       "Verification results": "Resultados de la verificación",
       "View details": "Ver detalles",
       onlyForVerificationPurposes:
@@ -216,8 +216,8 @@ const locales: Locales = {
       "Date of birth": "تاریخ تولد",
       "First name": "نام",
       "Last name": "نام خانوادگی",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "موفقیت",
+      Valid: "معتبر",
       "Verification results": "تأیید اعتبار نتایج ",
       "View details": "مشاهده جزئیات",
       onlyForVerificationPurposes:
@@ -227,47 +227,47 @@ const locales: Locales = {
   },
   fr: {
     cameraPermissionDialog: {
-      callToAction: "Allow",
+      callToAction: "Autoriser",
       content:
-        "The {{appname}} requires the use of your camera to capture the {{passName}}",
-      title: "Please allow camera use"
+        "Le {{appname}} nécessite l'utilisation de votre appareil photo pour capturer le {{passName}}",
+      title: "Veuillez autoriser l'utilisation de la caméra"
     },
     footer: {
       disclaimer:
         "Il ne s'agit pas d'un site Web officiel du gouvernement. Pour plus d'informations sur le CovidPass, rendez-vous sur https://nzcp.covid19.health.nz",
       privacy:
-        "The results of the scans are not shared to any entity; private, public, or governmental. No tracking whatsoever has been added to this site, if you find any issues, please email vaxxed@contrer.as"
+        "Les résultats des analyses ne sont partagés avec aucune entité, privée, publique ou gouvernementale. Aucun suivi n'a été ajouté à ce site. Si vous rencontrez des problèmes, veuillez envoyer un e-mail à vaxxed@contrer.as"
     },
     header: {
-      "Change language": "Change language",
-      "Scan your NZ COVIDpass": "Scan your NZ COVIDpass"
+      "Change language": "Changer de langue",
+      "Scan your NZ COVIDpass": "Scannez votre CovidPass NZ"
     },
     invalidCodes: {
       expired:
-        "Sorry, it looks like you COVIDpass has expired. Please contact the [Ministry of Health]({{link}})",
+        "Désolé, il semble que votre CovidPass ait expiré. Veuillez contacter le [ministère de la Santé]({{link}})",
       invalid:
         "Désolé, nous n'avons pas pu vérifier votre CovidPass. Veuillez contacter le [ministère de la Santé]({{link}})",
       notAcovidPass:
-        "Sorry, this doesn't look to be a COVIDpass. Please contact the [Ministry of Health]({{link}})"
+        "Désolé, cela ne semble pas être un CovidPass. Veuillez contacter le [ministère de la Santé]({{link}})"
     },
     thisLanguage: {
-      callToAction: "Use vaxxed.as in English",
-      name: "English"
+      callToAction: "Utilisez vaxxed.as en Français",
+      name: "Français"
     },
     verificationDialog: {
-      "Attention needed": "Attention needed",
-      Close: "Close",
+      "Attention needed": "Attention requise",
+      Close: "Fermer",
       "Copy results": "Copier les résultats",
-      "Date of birth": "Date of birth",
-      "First name": "First name",
-      "Last name": "Last name",
-      Success: "Success",
-      Valid: "Valid",
+      "Date of birth": "Date de naissance",
+      "First name": "Prénom",
+      "Last name": "Nom",
+      Success: "Succès",
+      Valid: "Valide",
       "Verification results": "Résultats de vérification",
-      "View details": "View details",
+      "View details": "Afficher les détails",
       onlyForVerificationPurposes:
-        "Please use the results for verification purposes only. It's a good thing to respect everybody's privacy.",
-      yes: "Yes"
+        "Veuillez utiliser les résultats uniquement à des fins de vérification. C'est une bonne chose de respecter la vie privée de chacun.",
+      yes: "Oui"
     }
   },
   hi: {
@@ -306,8 +306,8 @@ const locales: Locales = {
       "Date of birth": "जन्मतिथि",
       "First name": "पहला नाम",
       "Last name": "अंतिम नाम",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "सफलता",
+      Valid: "वैध",
       "Verification results": "सत्यापन के परिणाम",
       "View details": "विवरण देखें",
       onlyForVerificationPurposes:
@@ -351,8 +351,8 @@ const locales: Locales = {
       "Date of birth": "Te ra whanau",
       "First name": "Ingoa tuatahi",
       "Last name": "Ingoa whakamutunga",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "Momoho",
+      Valid: "Whaimana",
       "Verification results": "Nga hua manatoko",
       "View details": "Tirohia nga taipitopito",
       onlyForVerificationPurposes:
@@ -396,13 +396,58 @@ const locales: Locales = {
       "Date of birth": "Geboortedatum",
       "First name": "Voornaam",
       "Last name": "Achternaam",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "Succes",
+      Valid: "Geldig",
       "Verification results": "Resultaten van verificatie",
       "View details": "Bekijk details",
       onlyForVerificationPurposes:
         "Gebruik de resultaten alleen voor verificatiedoeleinden. Het is goed om ieders privacy te respecteren.",
       yes: "Ja"
+    }
+  },
+  pt: {
+    cameraPermissionDialog: {
+      callToAction: "Permitir",
+      content:
+        "O {{appname}} requer o uso de sua câmera para capturar o {{passName}}",
+      title: "Permita o uso da câmera"
+    },
+    footer: {
+      disclaimer:
+        "Este não é um site oficial do governo. Para obter mais informações sobre o CovidPass, acesse https://nzcp.covid19.health.nz",
+      privacy:
+        "Os resultados das varreduras não são compartilhados com nenhuma entidade; privada, pública ou governamental. Nenhum rastreamento foi adicionado a este site, se você encontrar algum problema, envie um e-mail para vaxxed@contrer.as"
+    },
+    header: {
+      "Change language": "Mudar língua",
+      "Scan your NZ COVIDpass": "Digitalize seu NZ CovidPass"
+    },
+    invalidCodes: {
+      expired:
+        "Desculpe, parece que você CovidPass expirou. Entre em contato com o [Ministério da Saúde]({{link}})",
+      invalid:
+        "Desculpe, não foi possível verificar seu CovidPass. Entre em contato com o [Ministério da Saúde]({{link}})",
+      notAcovidPass:
+        "Desculpe, isso não parece ser um CovidPass. Entre em contato com o [Ministério da Saúde]({{link}})"
+    },
+    thisLanguage: {
+      callToAction: "Use vaxxed.as em português",
+      name: "Português"
+    },
+    verificationDialog: {
+      "Attention needed": "Atenção necessária",
+      Close: "Fechar",
+      "Copy results": "Copiar resultados",
+      "Date of birth": "Data de nascimento",
+      "First name": "Nome",
+      "Last name": "Sobrenome",
+      Success: "Sucesso",
+      Valid: "Válido",
+      "Verification results": "Resultados da verificação",
+      "View details": "Ver detalhes",
+      onlyForVerificationPurposes:
+        "Use os resultados apenas para fins de verificação. É bom respeitar a privacidade de todos.",
+      yes: "Sim"
     }
   },
   ru: {
@@ -441,8 +486,8 @@ const locales: Locales = {
       "Date of birth": "Дата рождения",
       "First name": "Имя",
       "Last name": "Фамилия",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "Успешно",
+      Valid: "Достоверен",
       "Verification results": "Результаты проверки",
       "View details": "Подробнее",
       onlyForVerificationPurposes:
@@ -486,8 +531,8 @@ const locales: Locales = {
       "Date of birth": "Aso fanau",
       "First name": "Igoa muamua",
       "Last name": "Faʻaiu",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "Manuia",
+      Valid: "Aoga",
       "Verification results": "I&#39;uga fa&#39;amaoniga",
       "View details": "Va&#39;ai fa&#39;amatalaga",
       onlyForVerificationPurposes:
@@ -520,7 +565,7 @@ const locales: Locales = {
         "抱歉，這看起來不是 COVIDpass。 請聯繫[衛生部 (Ministry of Health)]({{link}})"
     },
     thisLanguage: {
-      callToAction: "使用 vaxxed.as 简体中文",
+      callToAction: "使用 vaxxed.as 简体中文版",
       name: "简体中文"
     },
     verificationDialog: {
@@ -530,13 +575,13 @@ const locales: Locales = {
       "Date of birth": "出生日期",
       "First name": "名字",
       "Last name": "姓氏",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "成功",
+      Valid: "有效",
       "Verification results": "验证结果",
       "View details": "查看详情",
       onlyForVerificationPurposes:
         "请仅将结果用于验证目的。尊重每个人的隐私是一件好事。",
-      yes: "是"
+      yes: "成功"
     }
   },
   "zh-hk": {
@@ -564,8 +609,8 @@ const locales: Locales = {
         "抱歉，這看起來不是 COVIDpass。 請聯繫[衛生部 (Ministry of Health)]({{link}})"
     },
     thisLanguage: {
-      callToAction: "在繁體中文中使用 vaxxed.as",
-      name: "中國傳統的"
+      callToAction: "使用 vaxxed.as 繁體中文版",
+      name: "繁體中文"
     },
     verificationDialog: {
       "Attention needed": "敬請注意",
@@ -574,13 +619,13 @@ const locales: Locales = {
       "Date of birth": "出生日期",
       "First name": "名字",
       "Last name": "姓氏",
-      Success: "Success",
-      Valid: "Valid",
+      Success: "成功",
+      Valid: "有效",
       "Verification results": "驗證結果",
       "View details": "查看詳情",
       onlyForVerificationPurposes:
         "請使用結果僅作驗證之用。尊重每個人的隱私是件好事",
-      yes: "是"
+      yes: "成功"
     }
   }
 };

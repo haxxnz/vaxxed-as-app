@@ -10,6 +10,7 @@ export enum Locale {
   hi = "hi",
   mi = "mi",
   nl = "nl",
+  pt = "pt",
   ru = "ru",
   sm = "sm",
   "zh-cn" = "zh-cn",

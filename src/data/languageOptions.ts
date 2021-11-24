@@ -13,7 +13,7 @@ const languageOptions: LanguageOption[] = [
   {
     code: Locale.ar,
     name: "عربي",
-    callToAction: "باللغة العربية vaxxed.as استخدم",
+    callToAction: "استخدم vaxxed.as باللغة العربية",
     isRTL: true,
     changeLanguage: "غير اللغة",
     title: "مسح COVID الخاص بك في نيوزيلندا"
@@ -52,11 +52,11 @@ const languageOptions: LanguageOption[] = [
   },
   {
     code: Locale.fr,
-    name: "English",
-    callToAction: "Use vaxxed.as in English",
+    name: "Français",
+    callToAction: "Utilisez vaxxed.as en Français",
     isRTL: false,
-    changeLanguage: "Change language",
-    title: "Scan your NZ COVIDpass"
+    changeLanguage: "Changer de langue",
+    title: "Scannez votre CovidPass NZ"
   },
   {
     code: Locale.hi,
@@ -83,6 +83,14 @@ const languageOptions: LanguageOption[] = [
     title: "Scan je NZ COVIDpass"
   },
   {
+    code: Locale.pt,
+    name: "Português",
+    callToAction: "Use vaxxed.as em português",
+    isRTL: false,
+    changeLanguage: "Mudar língua",
+    title: "Digitalize seu NZ CovidPass"
+  },
+  {
     code: Locale.ru,
     name: "Русский",
     callToAction: "Использовать vaxxed.as на русском",
@@ -101,15 +109,15 @@ const languageOptions: LanguageOption[] = [
   {
     code: Locale["zh-cn"],
     name: "简体中文",
-    callToAction: "使用 vaxxed.as 简体中文",
+    callToAction: "使用 vaxxed.as 简体中文版",
     isRTL: false,
     changeLanguage: "改变语言",
     title: "扫描你的新西兰 CovidPass"
   },
   {
     code: Locale["zh-hk"],
-    name: "中國傳統的",
-    callToAction: "在繁體中文中使用 vaxxed.as",
+    name: "繁體中文",
+    callToAction: "使用 vaxxed.as 繁體中文版",
     isRTL: false,
     changeLanguage: "更改語言",
     title: "掃描您的 NZ COVIDpass"
